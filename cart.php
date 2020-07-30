@@ -17,15 +17,12 @@ and open the template in the editor.
     
     <link href="assets/css/bootstrap.css" rel="stylesheet">   
     <link href="assets/css/starter-template.css" rel="stylesheet">    
-    <script src="assets/javascript/bootstrap.bundle.js"></script></body>
+    <script src="assets/javascript/bootstrap.bundle.js"></script>
       
     <title>CHELL'S FRUIT</title>
   
     <style>
-        *{
-            color: #f1b0b7;
-        }
-         
+                 
         
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -79,6 +76,6 @@ and open the template in the editor.
                 </tfoot>
             </table>
             </div>            
-        
+        <?php include 'footer.php' ?>
     </body>
 </html>
