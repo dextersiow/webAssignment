@@ -20,6 +20,46 @@ and open the template in the editor.
         <script src="assets/javascript/bootstrap.bundle.js"></script>
 
         <title>CHELL'S FRUIT</title>
+       <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>  
+    
+    <link href="assets/css/bootstrap.css" rel="stylesheet">   
+    <link href="assets/css/starter-template.css" rel="stylesheet">    
+    <script src="assets/javascript/bootstrap.bundle.js"></script>
+      
+    <title>CHELL'S FRUIT</title>
+  
+    <style>
+        *{
+            color: #f1b0b7;
+        }
+         
+        
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    </head>
+    
+    <body>
+       <?php 
+       include 'header.php';
        
     </head>
 
