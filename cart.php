@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-       <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="generator" content="Jekyll v4.0.1">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
@@ -16,7 +16,7 @@ and open the template in the editor.
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>  
     
     <link href="assets/css/bootstrap.css" rel="stylesheet">   
-    <link href="assets/css/starter-template.css" rel="stylesheet">    
+    <link href="assets/css/homepage.css" rel="stylesheet">    
     <script src="assets/javascript/bootstrap.bundle.js"></script>
       
     <title>CHELL'S FRUIT</title>
@@ -42,8 +42,7 @@ and open the template in the editor.
     
     <body>
        <?php 
-       include 'header.php';
-       
+       include 'header.php';       
        ?>
         
         <div class="container" >
@@ -65,7 +64,7 @@ and open the template in the editor.
                     <tr>
                         <td width="55%"><img src="./pics/products/australia_carrot.jpg"><a class="remove" href="#">Remove</a></td>
                         <td>25.00</td>
-                        <td>1</td>
+                        <td><input type="number" name="quantity"></td>
                         <td>25.00</td>
                     </tr>                    
                 </tbody>
