@@ -21,25 +21,7 @@ Group Members: Siow Yee How, Ho Eu Zheng
     <link href="assets/css/homepage.css" rel="stylesheet">    
     <script src="assets/javascript/bootstrap.bundle.js"></script> 
   
-    <title>CHELL'S FRUIT</title>
-  
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-  
+    <title>CHELL'S FRUIT</title> 
   
   </head>
   <body>

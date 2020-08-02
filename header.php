@@ -43,9 +43,9 @@
         <a class="nav-link" href="#">Admin</a>
       </li> 
         <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+        <a class="nav-link dropdown-toggle" href="product.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">All</a>
+            <a class="dropdown-item" href="product.php">All</a>
           <a class="dropdown-item" href="#">Seasonal fruits</a>
           <a class="dropdown-item" href="#">Stone fruits</a>
           <a class="dropdown-item" href="#">Berries</a>
