@@ -35,34 +35,8 @@ and open the template in the editor.
       
     <title>CHELL'S FRUIT</title>
   
-    <style>
-        *{
-            color: #f1b0b7;
-        }
-         
-        
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    </head>
+    </head>      
     
-    <body>
-       <?php 
-       include 'header.php';
-       
-    </head>
-
     <body>
         <?php
         include 'header.php';
