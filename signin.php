@@ -30,7 +30,7 @@
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   
   <div class="mt-1">
-      <div>Don't have an account? <a id="register" href="#">Click Here</a></div>      
+      <div>Don't have an account? <a id="register" href="registerMember.php">Click Here</a></div>      
   </div>
   <p class="mt-4 mb-3 text-muted">&copy; 2018-2020</p>
 </form>
