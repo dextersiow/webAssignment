@@ -21,7 +21,7 @@ and open the template in the editor.
         <script src="assets/javascript/bootstrap.bundle.js"></script>
 
         <title>CHELL'S FRUIT</title>
-       
+
     </head>
     <body>
         <?php include'header.php' ?>
@@ -42,38 +42,62 @@ and open the template in the editor.
 
         <div class="container content-product">
             <div class="row">
-            <div class="col-3">
-                <div class="product-top">
-                    <img src="./pics/products/aiwen_mango.jpg">
-                    <div class="overlay">
-                        <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                        <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                <div class="col-3">
+                    <div class="product-top">
+                        <img src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
                     </div>
                 </div>
-                <div class="product-bottom text-center">
-                    <h3>Aiwen Mango</h3>
-                    <h5>RM 10.00</h5>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>            
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>
                 </div>
             </div>
-            <div class="col-3">
-                <a target="_blank" href="#">
-                    <img src="./pics/products/autumn_royal_black_grapes.jpg"></img>
-                </a>
-                <div class="desc">Aiwen Mango<br/>RM 10.00</div>
-            </div>
-            <div class="col-3">
-                <a target="_blank" href="#">
-                    <img src="./pics/products/hokkaido_honeydew.jpg"></img>
-                </a>
-                <div class="desc">Aiwen Mango<br/>RM 10.00</div>
-            </div>
-            <div class="col-3">
-                <a target="_blank" href="#">
-                    <img src="./pics/products/hokkaido_honeydew.jpg"></img>
-                </a>
-                <div class="desc">Aiwen Mango<br/>RM 10.00</div>
-            </div>
-        </div>
         </div>
         <?php include'footer.php' ?>
     </body>
