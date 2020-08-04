@@ -17,10 +17,12 @@ and open the template in the editor.
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>  
 
         <link href="assets/css/bootstrap.css" rel="stylesheet">   
-        <link href="assets/css/homepage.css" rel="stylesheet">    
+        <link href="assets/css/homepage.css" rel="stylesheet">        
         <script src="assets/javascript/bootstrap.bundle.js"></script>
-
+        <link href="assets/css/product.css" rel="stylesheet">
+  
         <title>CHELL'S FRUIT</title>
+        
 
     </head>
     <body>
@@ -40,11 +42,12 @@ and open the template in the editor.
             </select>
         </div>
 
-        <div class="container content-product">
+        <div class="container">
+            <h2>All Product</h2>
             <div class="row">
                 <div class="col-3">
                     <div class="product-top">
-                        <img src="./pics/products/aiwen_mango.jpg">
+                        <img class="product-img" src="./pics/products/aiwen_mango.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
                             <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
@@ -58,43 +61,43 @@ and open the template in the editor.
                 
                 <div class="col-3">
                     <div class="product-top">
-                        <img src="./pics/products/aiwen_mango.jpg">
+                        <img class="product-img" src="./pics/products/australia_carrot.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
                             <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
-                        <h3>Aiwen Mango</h3>
-                        <h5>RM 10.00</h5>
+                        <h3>Australia Carrot</h3>
+                        <h5>RM 20.00</h5>
                     </div>
                 </div>
                 
                 <div class="col-3">
                     <div class="product-top">
-                        <img src="./pics/products/aiwen_mango.jpg">
+                        <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
                             <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
-                        <h3>Aiwen Mango</h3>
-                        <h5>RM 10.00</h5>
+                        <h3>Golden Dragon Mango</h3>
+                        <h5>RM 18.00</h5>
                     </div>            
                 </div>
                 
                 <div class="col-3">
                     <div class="product-top">
-                        <img src="./pics/products/aiwen_mango.jpg">
+                        <img class="product-img" src="pics/products/forelle_pear.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
                             <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
-                        <h3>Aiwen Mango</h3>
-                        <h5>RM 10.00</h5>
+                        <h3>Forelle Pear</h3>
+                        <h5>RM 11.00</h5>
                     </div>
                 </div>
             </div>

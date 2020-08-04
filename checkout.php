@@ -18,6 +18,12 @@ and open the template in the editor.
     <link href="assets/css/bootstrap.css" rel="stylesheet">   
     <link href="assets/css/homepage.css" rel="stylesheet">    
     <script src="assets/javascript/bootstrap.bundle.js"></script>
+    
+    <style>
+            .cart-itemname{                
+                width: 30%;
+            }
+    </style>
       
     <title>CHELL'S FRUIT</title>
     
@@ -25,6 +31,10 @@ and open the template in the editor.
     
     <body>
         <header><a href="index.php"><img src="pics/logo.jpeg" class="mx-auto d-block"> </a></header>
+        <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Checkout</h1>
+        </div>
         <div class="row">
             <div class="col-6">
                 <form action="#" method="POST">
@@ -50,6 +60,7 @@ and open the template in the editor.
                  <table class="table table-hover table" style="border-bottom:1px;">  
                     <tr class="cart cart-row">
                         <td width="55%"><img src="./pics/products/australia_carrot.jpg"></td>
+                        <td>Australia Carrot</td>
                         <td>25.00</td>
                         <td>1</td>
                         <td>25.00</td>                        
@@ -57,17 +68,17 @@ and open the template in the editor.
                 <tfoot>
                     <tr>
                         <td>Subtotal:<br>Shipping:</td>
-                        <td colspan="3" style="text-align:right">RM 25.00<br>RM 10.00</td>
+                        <td colspan="4" style="text-align:right">RM 25.00<br>RM 10.00</td>
                     </tr>
                     <tr>
                         <td>Total:</td>
-                        <td colspan="3" style="text-align: right">RM 35.00<br></td>
+                        <td colspan="4" style="text-align: right">RM 35.00<br></td>
                     </tr>
                 </tfoot>
             </table>
             </div>
         </div>
-        
+        </div>
          <?php include 'footer.php'; ?>       
        
     </body>
