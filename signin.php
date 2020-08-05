@@ -17,7 +17,7 @@
   <body class="text-center">
     <form class="form-signin">
         <a href="index.php"><img class="mb-4" src="pics/logo.jpeg" alt="" width="350" height="180"></a>
-  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 font-weight-normal">Member sign in</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>

@@ -31,10 +31,7 @@ and open the template in the editor.
                 width: 30%;
             }
             
-            img{
-                height: 5%;
-                width: 35%;
-            }
+           
         </style>
 
         <title>CHELL'S FRUIT</title>
