@@ -101,6 +101,178 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/australia_carrot.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Australia Carrot</h3>
+                        <h5>RM 20.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Golden Dragon Mango</h3>
+                        <h5>RM 18.00</h5>
+                    </div>            
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/forelle_pear.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Forelle Pear</h3>
+                        <h5>RM 11.00</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/australia_carrot.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Australia Carrot</h3>
+                        <h5>RM 20.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Golden Dragon Mango</h3>
+                        <h5>RM 18.00</h5>
+                    </div>            
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/forelle_pear.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Forelle Pear</h3>
+                        <h5>RM 11.00</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/aiwen_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Aiwen Mango</h3>
+                        <h5>RM 10.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="./pics/products/australia_carrot.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Australia Carrot</h3>
+                        <h5>RM 20.00</h5>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Golden Dragon Mango</h3>
+                        <h5>RM 18.00</h5>
+                    </div>            
+                </div>
+                
+                <div class="col-3">
+                    <div class="product-top">
+                        <img class="product-img" src="pics/products/forelle_pear.jpg">
+                        <div class="overlay">
+                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                        </div>
+                    </div>
+                    <div class="product-bottom text-center">
+                        <h3>Forelle Pear</h3>
+                        <h5>RM 11.00</h5>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php include'footer.php' ?>
     </body>
