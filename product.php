@@ -21,8 +21,7 @@ and open the template in the editor.
         <script src="assets/javascript/bootstrap.bundle.js"></script>
         <link href="assets/css/product.css" rel="stylesheet">
   
-        <title>CHELL'S FRUIT</title>
-        
+        <title>CHELL'S FRUIT</title>        
 
     </head>
     <body>
@@ -64,7 +63,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/australia_carrot.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary" title="Add to cart" onclick="location='cart.php'"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
