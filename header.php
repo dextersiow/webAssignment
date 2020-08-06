@@ -42,9 +42,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="admin_login.php">Admin</a>
             </li> 
-            <li class="nav-item active">
-                <a class="nav-link" href="product.php">Products</a>        
-            </li>
+            <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="product.php" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="product.php">All</a>
+          <a class="dropdown-item" href="#">Seasonal fruits</a>
+          <a class="dropdown-item" href="#">Stone fruits</a>
+          <a class="dropdown-item" href="#">Berries</a>
+          <a class="dropdown-item" href="#">Tropical and exotic</a>          
+          <a class="dropdown-item" href="#">Others</a>
+        </div>
+        </li>
         </ul>
         <ul class="nav justify-content-end">
             <li class="nav-item active">

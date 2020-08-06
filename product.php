@@ -23,12 +23,27 @@ and open the template in the editor.
   
         <title>CHELL'S FRUIT</title>        
 
+        <style>
+            .bg-cover{
+                background-image: url("pics/product_banner2.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;                   
+            }
+            .h1{
+                font-weight: bold;
+            }
+            .jumbotron{
+                margin-bottom: 0px;
+            }
+        </style>
     </head>
     <body>
         <?php include'header.php' ?>
 
-        <div class="jumbotron text-center">
-            <h1>Products</h1>
+        <div class="jumbotron text-center bg-cover">            
+            <div class="container">
+            <h1 class="display-3 mb-1 font-italic">Products</h1>
+            </div>
         </div>
 
         <div class="container-fluid filter-toolbar">

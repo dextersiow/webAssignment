@@ -23,6 +23,14 @@ and open the template in the editor.
             .cart-itemname{                
                 width: 30%;
             }
+            .bg-cover{
+                background-image: url("pics/cart_banner3.jfif");
+                background-repeat: no-repeat;
+                background-size: 1200px 400px; 
+            }
+            .jumbotron{
+                padding-bottom: 240px;                
+            }
         </style>
 
         <title>CHELL'S FRUIT</title>
@@ -35,9 +43,11 @@ and open the template in the editor.
         ?>
 
         <div class="container" >
-            <div class="jumbotron text-center">
+            <div class="jumbotron text-center bg-cover">
+                <div class="container">
                 <h1>Your Cart</h1>
                 <p><a href="product.php">Continue Shopping</a></p>
+                </div>
             </div>
 
             <table class="table table-hover table" style="border-bottom:1px;">

@@ -7,7 +7,7 @@
       <div class="col-md-4 mx-auto"> 
         <h5 class="font-weight-bold text-uppercase mt-3 mb-4">WE LOVE MAKING THE BEST FRUITS</h5>
         <p>Every 35 days, your skin replaces itself and your body make new cells from the food you eat.
-            What you eat literally becomes YOU. So, make sure you eat organic and healthy fruits.<p style="text-align: center">-Chell C.E.O</p></p>
+            What you eat literally becomes YOU. So, make sure you eat organic and healthy fruits.<blockquote class="blockquote-footer">Chell C.E.O</blockquote></p>
       </div>    
         
       <!-- Links-->
