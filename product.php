@@ -22,7 +22,15 @@ and open the template in the editor.
         <link href="assets/css/product.css" rel="stylesheet">
   
         <title>CHELL'S FRUIT</title>        
-
+        
+        <script>
+            $( document ).ready(function() {
+                $('.add-to-cart').click(function(){
+                    console.log(this.id);
+                });
+            });
+        </script>
+        
         <style>
             .bg-cover{
                 background-image: url("pics/product_banner2.jpg");
@@ -38,7 +46,10 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <?php include'header.php' ?>
+        <?php 
+            $con= new mysqli('localhost','root','',);
+        ?>
+        <?php include'header.php' ?>        
 
         <div class="jumbotron text-center bg-cover">            
             <div class="container">
@@ -64,7 +75,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/aiwen_mango.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -78,7 +89,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/australia_carrot.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart" onclick="location='cart.php'"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart" id="carrot"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -92,7 +103,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -106,7 +117,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/forelle_pear.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -122,7 +133,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/australia_rock_melon.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -136,7 +147,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/rambutan.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -150,7 +161,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/young_coconut.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -164,7 +175,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/green_grapes.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -179,7 +190,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/thai_lychee.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -193,7 +204,7 @@ and open the template in the editor.
                         <img class="product-img" src="./pics/products/red_seedless_watermelon.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -207,7 +218,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/beetroot.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
@@ -221,7 +232,7 @@ and open the template in the editor.
                         <img class="product-img" src="pics/products/tomatoes.jpg">
                         <div class="overlay">
                             <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
                         </div>
                     </div>
                     <div class="product-bottom text-center">
