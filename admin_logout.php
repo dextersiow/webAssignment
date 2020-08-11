@@ -1,9 +1,11 @@
 <?php
-   session_start();
-   unset($_SESSION["username"]);
-   unset($_SESSION["password"]);
-   
-   echo 'You have cleaned session';
-   header('Refresh: 2; URL = login.php');
+session_start();
+ 
+$_SESSION = array();
+ 
+session_destroy();
+ 
+header("location: admin_login.php");
+exit;
 ?>
 
