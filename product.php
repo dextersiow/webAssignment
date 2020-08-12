@@ -4,6 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
     <head>
     <head>
@@ -45,10 +46,7 @@ and open the template in the editor.
             }
         </style>
     </head>
-    <body>
-        <?php 
-            $con= new mysqli('localhost','root','',);
-        ?>
+    <body>       
         <?php include'header.php' ?>        
 
         <div class="jumbotron text-center bg-cover">            
@@ -69,21 +67,33 @@ and open the template in the editor.
 
         <div class="container">
             <h2>All Product</h2>
-            <div class="row">
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/aiwen_mango.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
+            <?php
+                $con = new mysqli('localhost', 'root', '', 'webassignment');
+                if ($con->connect_error) {
+                    die("Error: Could not connect. " . $con->connect_error);
+                }
+                $sql="select * from product";
+                $result=$con->query($sql);
+                $row=$result->fetch_assoc();
+            ?>
+            <?php          
+
+            echo "<div class=\"row\">
+                <div class=\"col-3\">
+                    <div class=\"product-top\">
+                        <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
+                        <div class=\"overlay\">
+                            <button type=\"button\" class=\"btn btn-secondary\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
+                            <button type=\"button\" class=\"btn btn-secondary add-to-cart\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
                         </div>
                     </div>
-                    <div class="product-bottom text-center">
-                        <h3>Aiwen Mango</h3>
-                        <h5>RM 10.00</h5>
+                    <div class=\"product-bottom text-center\">
+                        <h3>{$row["productName"]}</h3>
+                        <h5>RM {$row["price"]}</h5>
                     </div>
-                </div>
-                
+                </div>";           
+            
+              ?>
                 <div class="col-3">
                     <div class="product-top">
                         <img class="product-img" src="./pics/products/australia_carrot.jpg">
