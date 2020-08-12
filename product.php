@@ -73,11 +73,12 @@ and open the template in the editor.
                     die("Error: Could not connect. " . $con->connect_error);
                 }
                 $sql="select * from product";
-                $result=$con->query($sql);
-                $row=$result->fetch_assoc();
+                $productArray=$con->query($sql);
+                $row=$productArray->fetch_assoc();
+                $numOfRow=$con->affected_rows;
             ?>
             <?php          
-
+            
             echo "<div class=\"row\">
                 <div class=\"col-3\">
                     <div class=\"product-top\">
