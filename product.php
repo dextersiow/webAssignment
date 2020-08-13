@@ -68,10 +68,7 @@ and open the template in the editor.
         <div class="container">
             <h2>All Product</h2>
             <?php
-                $con = new mysqli('localhost', 'root', '', 'webassignment');
-                if ($con->connect_error) {
-                    die("Error: Could not connect. " . $con->connect_error);
-                }
+                require_once 'config.php';
                 $sql="select * from product";
                 $productArray=$con->query($sql);
                 $row=$productArray->fetch_assoc();
