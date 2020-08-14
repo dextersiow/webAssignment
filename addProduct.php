@@ -1,3 +1,5 @@
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -21,8 +23,9 @@
             $cat = $_POST['category'];
             
             $fname=$_FILES['pImg']['name'];
-            $destination = 'uploads/'.$fname;
+            $destination = 'pics/products/'.$fname;
             $extension = pathinfo($fname, PATHINFO_EXTENSION);
+            
             
             $file = $_FILES['pImg']['tmp_name'];
             $size = $_FILES['pImg']['size'];
@@ -35,7 +38,7 @@
             }
             else{
                 if(move_uploaded_file($file, $destination)){
-                    $sql = "INSERT INTO product (cat_id, productName, price, productImage) VALUES ('$cat,$pname,$price,$fname')";
+                    $sql = "INSERT INTO product (cat_id, productName, price, productImage) VALUES ('$cat','$pname',$price,'$fname')";
                     if(mysqli_query($link, $sql)){
                         echo "Sucessful";
                     }
@@ -46,6 +49,7 @@
             }
                       
         }
+     
         mysqli_close($link);    
         ?>
         
@@ -85,7 +89,7 @@
                     </tr>
                 
                 </table>
-            <button style="margin-top: 10px;"type="submit" class="btn btn-primary">Submit</button> 
+            <input style="margin-top: 10px;" type="submit" name="submit" class="btn btn-primary">
          </form>
         </div>
         
