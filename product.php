@@ -77,13 +77,15 @@ and open the template in the editor.
             <?php          
             
             echo "<div class=\"row\">";
+            
+            
             while($row = $productArray->fetch_assoc()){
                 echo "<div class=\"col-3\">
                     <div class=\"product-top\">
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
                         <div class=\"overlay\">
                             <button type=\"button\" class=\"btn btn-secondary\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
-                            <button type=\"button\" class=\"btn btn-secondary add-to-cart\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
+                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='cart.php'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
                         </div>
                     </div>
                     <div class=\"product-bottom text-center\">

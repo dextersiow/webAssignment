@@ -39,9 +39,9 @@ and open the template in the editor.
 
     <body>
         <?php
-        include 'header.php';
+            include 'header.php';
         ?>
-
+       
         <div class="container" >
             <div class="jumbotron text-center bg-cover">
                 <div class="container">
@@ -60,6 +60,9 @@ and open the template in the editor.
                     </tr>
                 </thead>                
                 <tbody>
+                    <?php
+                    
+                    ?>
                     <tr class="cart cart-row">
                         <td class="cart-itemimg"><img src="pics/products/australia_carrot.jpg"></td>
                         <td class="cart-itemname">Australia Carrot</td>
