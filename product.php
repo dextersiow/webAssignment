@@ -68,7 +68,7 @@ and open the template in the editor.
         <div class="container">
             <h2>All Product</h2>
             <?php
-                require_once 'config.php';
+                $con= new mysqli('localhost','root','','webassignment');
                 $sql="select * from product";
                 $productArray=$con->query($sql);
                 $row=$productArray->fetch_assoc();
