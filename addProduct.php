@@ -9,8 +9,7 @@
             #addForm{
                 display:block;
                 margin: auto;
-            }
-            
+            }            
         </style>
     </head>
     <body>
@@ -31,7 +30,8 @@
             $size = $_FILES['pImg']['size'];
             
             if(!in_array($extension,['png','jpeg','jpg'])){
-                echo 'Invalid file type';
+                $message = "Invalid file type";
+                
             }
             elseif($_FILES['pImg']['size'] > 1000000){
                 echo 'File too large';
@@ -56,6 +56,9 @@
         <div class="container">
             <form action='addProduct.php' method='post' class="needs-validation" novalidate id="addForm" enctype="multipart/form-data">
             <h2>Add product</h2>
+            <div>
+                <a href="welcome_admin.php"><img src="pics/back_btn.png" style="width:1.5%;"></a>
+            </div>
             <table class="table table-borderless">                
                     <tr>
                         <td><label for="productName">Product Name:</label></td>
@@ -89,7 +92,13 @@
                     </tr>
                 
                 </table>
+            <?php if(!empty($message)){
+                echo'<p>'.$message.'</p>';                             
+            }
+                ?>
             <input style="margin-top: 10px;" type="submit" name="submit" class="btn btn-primary">
+            <input type="reset" name="reset" class="btn btn-primary" onclick="location.reload();">
+            
          </form>
         </div>
         
