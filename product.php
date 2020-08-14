@@ -71,13 +71,14 @@ and open the template in the editor.
                 $con= new mysqli('localhost','root','','webassignment');
                 $sql="select * from product";
                 $productArray=$con->query($sql);
-                $row=$productArray->fetch_assoc();
+                
                 $numOfRow=$con->affected_rows;
             ?>
             <?php          
             
-            echo "<div class=\"row\">
-                <div class=\"col-3\">
+            echo "<div class=\"row\">";
+            while($row = $productArray->fetch_assoc()){
+                echo "<div class=\"col-3\">
                     <div class=\"product-top\">
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
                         <div class=\"overlay\">
@@ -89,167 +90,11 @@ and open the template in the editor.
                         <h3>{$row["productName"]}</h3>
                         <h5>RM {$row["price"]}</h5>
                     </div>
-                </div>";           
-            
-              ?>
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/australia_carrot.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart" id="carrot"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Australia Carrot</h3>
-                        <h5>RM 20.00</h5>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/golden_dragon_mango.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Golden Dragon Mango</h3>
-                        <h5>RM 18.00</h5>
-                    </div>            
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/forelle_pear.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Forelle Pear</h3>
-                        <h5>RM 11.00</h5>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/australia_rock_melon.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Australia Rock Melon</h3>
-                        <h5>RM 12.00</h5>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/rambutan.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>rambutan</h3>
-                        <h5>RM 15.00</h5>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/young_coconut.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Young Coconut</h3>
-                        <h5>RM 6.00</h5>
-                    </div>            
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/green_grapes.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Green Grapes</h3>
-                        <h5>RM 17.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/thai_lychee.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Thai Lychee</h3>
-                        <h5>RM 18.00</h5>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="./pics/products/red_seedless_watermelon.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Red Seedless Watermelon</h3>
-                        <h5>RM 18.00</h5>
-                    </div>
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/beetroot.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Beetroot</h3>
-                        <h5>RM 9.00</h5>
-                    </div>            
-                </div>
-                
-                <div class="col-3">
-                    <div class="product-top">
-                        <img class="product-img" src="pics/products/tomatoes.jpg">
-                        <div class="overlay">
-                            <button type="button" class="btn btn-secondary" title="Preview"><i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-secondary add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i></button>                        
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <h3>Tomato</h3>
-                        <h5>RM 3</h5>
-                    </div>
-                </div>
-            </div>            
-        </div>
+                    </div>";
+            }
+            echo "</div>";
+            ?>
+
         <?php include'footer.php' ?>
     </body>
 </html>
