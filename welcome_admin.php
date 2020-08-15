@@ -22,7 +22,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </head>
 <body>
     <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome back.</h1>
+        <h1>Hi, <b><?php echo strtoupper($_SESSION['username']); ?></b>. Welcome back.</h1>
     </div>
     <div class="text-left" style="margin-left: 20px;"> 
     <h5>Admin ID: <?php echo htmlspecialchars($_SESSION["admin_id"]);?></h5>
@@ -32,10 +32,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       
     <div class="list-group" style="width: 30%; margin: 50px auto 10px auto;">
         <h4 class="list-group-item" style="background-color:#DFE0E2;">Menu action</h4>  
+        <a href="manageProduct.php" class="list-group-item list-group-item-action">Manage product</a>     
         <a href="addProduct.php" class="list-group-item list-group-item-action">Add product</a>
-        <a href="#" class="list-group-item list-group-item-action">Edit product</a>
-        <a href="#" class="list-group-item list-group-item-action">Delete product</a>
-        <a href="#" class="list-group-item list-group-item-action">List all product</a>
         <?php if(strcmp($_SESSION['admin_id'], "1001") == 0){
                     echo '<a href="#" class="list-group-item list-group-item-action">Add admin</a>'
             . '           <a href="#" class="list-group-item list-group-item-action">Delete admin</a>';

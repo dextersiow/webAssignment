@@ -2,7 +2,7 @@
 session_start();
  
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome_admin.php");
+    header("location: welcome_admin.php?admin={$username}");
     exit;
 }
  
@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["admin_id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            header("location: welcome_admin.php");
+                            header("location: welcome_admin.php?admin={$username}");
                             exit;
                         }else{
                             $password_err = "The password you entered was not valid.";
@@ -120,7 +120,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
                 <a href="index.php"><input style="margin-left: 10px; "type="button" class="btn btn-danger" value="Back""></a>
-            </div>            
+            </div>
+        </form>            
     </div> 
       
    </body>
