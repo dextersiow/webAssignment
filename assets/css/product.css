@@ -4,7 +4,7 @@
 .container h2{
     background-color: orange;
     color: white;
-    width: 190px;
+    width: fit-content;
     font-size: 24px;
     padding: 5px;
     height: 40px;
@@ -15,8 +15,20 @@
     border-top: 38px solid orange;
     border-right: 40px solid transparent;
     position: relative;
-    left: 64px;
+    left: 45px;
     top: 35px;
+}
+
+.jumbotron{
+    background-image: url("../../pics/product_banner2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+}
+
+
+h1{
+    font-size: 90px;
 }
 
 .product-top{
@@ -25,8 +37,17 @@
 
 .filter-toolbar{
     background-color: #ff9933;
+
 }
 
+.filter-content a{
+    font-size: 22px;             
+    opacity: 80%;
+}
+span{
+    font-size: 22px;             
+    opacity: 80%;
+}
 .row{
     margin-top: 30px;
 }
@@ -59,3 +80,4 @@
     margin-left: 5%;
     transition: 0.5s;
 }
+

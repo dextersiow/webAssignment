@@ -7,7 +7,6 @@ and open the template in the editor.
 
 <html>
     <head>
-    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="generator" content="Jekyll v4.0.1">
@@ -21,65 +20,68 @@ and open the template in the editor.
         <link href="assets/css/homepage.css" rel="stylesheet">        
         <script src="assets/javascript/bootstrap.bundle.js"></script>
         <link href="assets/css/product.css" rel="stylesheet">
-  
+
         <title>CHELL'S FRUIT</title>        
         
-        <script>
-            $( document ).ready(function() {
-                $('.add-to-cart').click(function(){
-                    console.log(this.id);
-                });
-            });
-        </script>
-        
-        <style>
-            .bg-cover{
-                background-image: url("pics/product_banner2.jpg");
-                background-repeat: no-repeat;
-                background-size: cover;                   
-            }
-            .h1{
-                font-weight: bold;
-            }
-            .jumbotron{
-                margin-bottom: 0px;
-            }
-        </style>
     </head>
     <body>       
         <?php include'header.php' ?>        
+        <?php
+        $con = new mysqli('localhost', 'root', '', 'webassignment');
+        
+            if ($_REQUEST['filter'] == "others") {
+                $sql = "select * from product where cat_id='OT01'";
+                $title="Others";
+            } else if ($_REQUEST['filter'] == "seasonal") {
+                $sql = "select * from product where cat_id='SE01'";
+                $title="Seasonal Fruits";
+            } else if ($_REQUEST['filter'] == "stone") {
+                $sql = "select * from product where cat_id='ST01'";
+                $title="Stone Fruits";
+            } else if ($_REQUEST['filter'] == "berries") {
+                $sql = "select * from product where cat_id='BE01'";
+                $title="Berries";
+            } else if ($_REQUEST['filter'] == "tropical") {
+                $sql = "select * from product where cat_id='TE01'";
+                $title="Tropical and Exotic";
+            } else {
+                $sql = "select * from product";
+                $title="All product";
+            }
+        
 
-        <div class="jumbotron text-center bg-cover">            
+        $productArray = $con->query($sql);
+        $numOfRow = $con->affected_rows;
+        ?>
+        <div class="jumbotron text-center">            
             <div class="container">
-            <h1 class="display-3 mb-1 font-italic">Products</h1>
+                <h1 class="font-italic">Products</h1>
             </div>
         </div>
 
-        <div class="container-fluid filter-toolbar">
-            <label for="filter">Filter by: </label>
-            <select name="filter">
-                <option value="">All product</option>
-                <option value="">Seasonal Fruit</option>
-                <option value="">Stone Fruits</option>
-                <option value="">Berries</option>
-            </select>
+        <div class="container-fluid filter-toolbar">            
+            <div class="filter-content dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Filter By</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="product.php?filter=all">All product</a>
+                    <a class="dropdown-item" href="product.php?filter=seasonal">Seasonal fruits</a>
+                    <a class="dropdown-item" href="product.php?filter=stone">Stone fruits</a>
+                    <a class="dropdown-item" href="product.php?filter=berries">Berries</a>
+                    <a class="dropdown-item" href="product.php?filter=tropical">Tropical and exotic</a>          
+                    <a class="dropdown-item" href="product.php?filter=others">Others</a>
+                </div>
+                <span><?php echo"$title";?></span>
+            </div>           
         </div>
 
         <div class="container">
-            <h2>All Product</h2>
+            <h2><?php echo "$title"?></h2>
+           
             <?php
-                $con= new mysqli('localhost','root','','webassignment');
-                $sql="select * from product";
-                $productArray=$con->query($sql);
-                
-                $numOfRow=$con->affected_rows;
-            ?>
-            <?php          
-            
             echo "<div class=\"row\">";
-            
-            
-            while($row = $productArray->fetch_assoc()){
+
+
+            while ($row = $productArray->fetch_assoc()) {
                 echo "<div class=\"col-3\">
                     <div class=\"product-top\">
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
@@ -97,6 +99,6 @@ and open the template in the editor.
             echo "</div>";
             ?>
 
-        <?php include'footer.php' ?>
+            <?php include'footer.php' ?>
     </body>
 </html>
