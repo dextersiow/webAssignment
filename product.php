@@ -28,27 +28,30 @@ and open the template in the editor.
         <?php include'header.php' ?>        
         <?php
         $con = new mysqli('localhost', 'root', '', 'webassignment');
-        
+        if (isset($_REQUEST['filter'])) {
             if ($_REQUEST['filter'] == "others") {
                 $sql = "select * from product where cat_id='OT01'";
-                $title="Others";
+                $title = "Others";
             } else if ($_REQUEST['filter'] == "seasonal") {
                 $sql = "select * from product where cat_id='SE01'";
-                $title="Seasonal Fruits";
+                $title = "Seasonal Fruits";
             } else if ($_REQUEST['filter'] == "stone") {
                 $sql = "select * from product where cat_id='ST01'";
-                $title="Stone Fruits";
+                $title = "Stone Fruits";
             } else if ($_REQUEST['filter'] == "berries") {
                 $sql = "select * from product where cat_id='BE01'";
-                $title="Berries";
+                $title = "Berries";
             } else if ($_REQUEST['filter'] == "tropical") {
                 $sql = "select * from product where cat_id='TE01'";
-                $title="Tropical and Exotic";
+                $title = "Tropical and Exotic";
             } else {
                 $sql = "select * from product";
-                $title="All product";
+                $title = "All product";
             }
-        
+        }else{
+            $sql = "select * from product";
+            $title = "All product";
+        }
 
         $productArray = $con->query($sql);
         $numOfRow = $con->affected_rows;
@@ -86,8 +89,8 @@ and open the template in the editor.
                     <div class=\"product-top\">
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
                         <div class=\"overlay\">
-                            <button type=\"button\" class=\"btn btn-secondary\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
-                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='cart.php'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
+                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='preview.php?productID={$row['productID']}'\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
+                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='cart.php?productID={$row['productID']}'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
                         </div>
                     </div>
                     <div class=\"product-bottom text-center\">
