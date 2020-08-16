@@ -89,7 +89,7 @@ and open the template in the editor.
                     <div class=\"product-top\">
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
                         <div class=\"overlay\">
-                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='preview.php?productID={$row['productID']}'\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
+                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='preview.php?productID={$row['productID']}&catID={$row['cat_id']}'\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
                             <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='cart.php?productID={$row['productID']}'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
                         </div>
                     </div>
