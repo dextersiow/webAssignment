@@ -4,6 +4,20 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+if (isset($_COOKIE['cart'])) {
+    $cart = explode('|', $_COOKIE['cart']);
+} else {
+    $cart = array();
+}
+if (isset($_REQUEST['remove'])) {
+    $k = $_REQUEST['remove'];
+    unset($cart[$k]);
+}
+$cartString = implode('|', $cart);
+setcookie('cart', $cartString);
+$select = implode(",", $cart);
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -39,7 +53,11 @@ and open the template in the editor.
 
     <body>
         <?php
-            include 'header.php';
+        include 'header.php';
+        $con = new mysqli('localhost', 'root', '', 'webassignment');        
+        $sql="select * from product where productID IN ($select)";
+        $result=$con->query($sql);
+        
         ?>
        
         <div class="container" >
@@ -61,16 +79,18 @@ and open the template in the editor.
                 </thead>                
                 <tbody>
                     <?php
-                    
+                    foreach ($cart as $key => $value) {
+                        $row = $result->fetch_assoc();
+                        echo "<tr class=\"cart cart-row\">
+                        <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
+                        <td class=\"cart-itemname\">{$row['productName']}</td>
+                        <td class=\"item-price\">{$row['price']}</td>                        
+                        <td class=\"item-quantity\"><input type=\"number\" name=\"quantity\" value=\"1\"></td>
+                        <td class=\"item-total\">25.00</td>
+                        <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
+                    </tr>";
+                    }
                     ?>
-                    <tr class="cart cart-row">
-                        <td class="cart-itemimg"><img src="pics/products/australia_carrot.jpg"></td>
-                        <td class="cart-itemname">Australia Carrot</td>
-                        <td class="item-price">25.00</td>                        
-                        <td class="item-quantity"><input type="number" name="quantity" value="1"></td>
-                        <td class="item-total">25.00</td>
-                        <td><button type="button" class="btn btn-danger remove-btn">Remove</button></td>
-                    </tr>                    
                 </tbody>
                 <tfoot>
                     <tr>                       

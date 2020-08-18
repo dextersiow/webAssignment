@@ -4,7 +4,29 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+if (isset($_COOKIE['cart'])) {
+    $cart = explode('|', $_COOKIE['cart']);
+} else {
+    $cart = array();
+}
 
+if (isset($_REQUEST['productID'])) {
+    for ($i = 0; $i < count($cart); $i++) {
+        if ($_REQUEST['productID'] == $cart[$i]) {
+            $error = 1;
+        }
+    }
+    if (isset($error)) {
+        $errorMsg = "Item has already been added to cart!";
+    } else {
+        $cart[] = $_REQUEST['productID'];
+        $success = "Item has been added to cart successfully!";
+    }
+    $cartString = implode('|', $cart);
+    setcookie('cart', $cartString);
+}
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -22,7 +44,7 @@ and open the template in the editor.
         <link href="assets/css/product.css" rel="stylesheet">
 
         <title>CHELL'S FRUIT</title>        
-        
+
     </head>
     <body>       
         <?php include'header.php' ?>        
@@ -48,13 +70,13 @@ and open the template in the editor.
                 $sql = "select * from product";
                 $title = "All product";
             }
-        }else{
+        }else {
             $sql = "select * from product";
             $title = "All product";
         }
-
+        
         $productArray = $con->query($sql);
-        $numOfRow = $con->affected_rows;
+        
         ?>
         <div class="jumbotron text-center">            
             <div class="container">
@@ -72,14 +94,22 @@ and open the template in the editor.
                     <a class="dropdown-item" href="product.php?filter=berries">Berries</a>
                     <a class="dropdown-item" href="product.php?filter=tropical">Tropical and exotic</a>          
                     <a class="dropdown-item" href="product.php?filter=others">Others</a>
-                </div>
-                <span><?php echo"$title";?></span>
+                </div>                
+                <span><?php echo"$title"; ?></span>                
             </div>           
         </div>
 
         <div class="container">
-            <h2><?php echo "$title"?></h2>
-           
+            <?php
+            if(isset($errorMsg)){
+                echo"<span class='alert alert_success'>$errorMsg</span>";
+            }else if(isset ($success)){
+                echo"<span class='alert alert_success'>$success</span>";
+            }
+            
+            ?>
+            <h2><?php echo $title;?></h2>
+
             <?php
             echo "<div class=\"row\">";
 
@@ -90,7 +120,7 @@ and open the template in the editor.
                         <img class=\"product-img\" src=\"./pics/products/{$row["productImage"]}\">
                         <div class=\"overlay\">
                             <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='preview.php?productID={$row['productID']}&catID={$row['cat_id']}'\" title=\"Preview\"><i class=\"fa fa-eye\"></i></button>
-                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='cart.php?productID={$row['productID']}'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
+                            <button type=\"button\" class=\"btn btn-secondary\" onclick=\"location='product.php?productID={$row['productID']}'\" title=\"Add to cart\"><i class=\"fa fa-shopping-cart\"></i></button>                        
                         </div>
                     </div>
                     <div class=\"product-bottom text-center\">
@@ -100,6 +130,7 @@ and open the template in the editor.
                     </div>";
             }
             echo "</div>";
+            $con->close();
             ?>
 
             <?php include'footer.php' ?>
