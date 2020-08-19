@@ -18,7 +18,7 @@ and open the template in the editor.
         <link href="assets/css/bootstrap.css" rel="stylesheet">   
         <link href="assets/css/homepage.css" rel="stylesheet">    
         <script src="assets/javascript/bootstrap.bundle.js"></script>
-
+        
         <style>
             .jumbotron{
                 background-color: orange;

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <?php
+include 'header.php'; 
+
 if (isset($_COOKIE['cart'])) {
     $cart = explode('|', $_COOKIE['cart']);
 } else {
@@ -32,7 +28,7 @@ $select = implode(",", $cart);
         <link href="assets/css/bootstrap.css" rel="stylesheet">   
         <link href="assets/css/homepage.css" rel="stylesheet">    
         <script src="assets/javascript/bootstrap.bundle.js"></script>
-
+        
         <style>
             .cart-itemname{                
                 width: 30%;
@@ -52,8 +48,9 @@ $select = implode(",", $cart);
     </head>      
 
     <body>
-        <?php
-        include 'header.php';
+        <?php        
+        
+        
         $con = new mysqli('localhost', 'root', '', 'webassignment');        
         $sql="select * from product where productID IN ($select)";
         $result=$con->query($sql);

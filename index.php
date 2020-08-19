@@ -26,7 +26,7 @@ Group Members: Siow Yee How, Ho Eu Zheng
     </head>
     <body>
         <?php        
-        include 'header.php';
+        include 'header.php';          
         ?>    
 
 

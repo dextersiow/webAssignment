@@ -13,67 +13,115 @@
         <link href="assets/css/homepage.css" rel="stylesheet">    
         <link href="assets/css/registerform.css" rel="stylesheet">  
         <script src="assets/javascript/bootstrap.bundle.js"></script> 
-  
+        <style>#logu{visibility:hidden;}</style>
         <title>CHELL'S FRUIT</title> 
     </head>
     <body>
         <?php include 'header.php'; ?>
         <br><br><br>
         
-        <form name="frmRegistration" method="post" action="">
+        <form name="frmRegistration" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="form-table">
         <div class="form-head">Register</div>
          
         <?php
-         require_once 'config.php';
-       $username = $password = $confirm_password = "";
-       $username_err = $password_err = $confirm_password_err = "";
-       
-       if($_SERVER["REQUEST_METHOD"] == "POST"){
-           if(empty(trim($_POST['username']))){
-               $username_err = "Please enter a username";
-           }
-           else{
-               $sql = "SELECT id FROM admin WHERE username = ?";
-               
-               if($stmt = mysqli_prepare($link, $sql)){
-                   mysqli_stmt_bind_param($stmt, "s", $param_username);
-                   $param_username = trim($_POST["username"]);
-                   
-                   if(mysqli_stmt_execute($stmt)){
-                       mysqli_stmt_store_result($stmt);
-                       
-                       if(mysqli_stmt_num_rows($stmt) ==1){
-                           $username_err = "This username is already taken";
-                       }
-                   }
-               }
-           }
-       }
-?>       
+        require_once "config.php";
+ 
+        $fullname = $email = $password = $confirm_password = "";
+        $email_err = $password_err = $confirm_password_err = "";
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            if(empty(trim($_POST["userEmail"]))){
+                $email_err = "Please enter a email.";
+            } else{
+                $sql = "SELECT member_id FROM member WHERE email = ?";
+
+                if($stmt = mysqli_prepare($link, $sql)){
+                    mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+                    $param_username = trim($_POST["userEmail"]);
+
+                    if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_store_result($stmt);
+
+                        if(mysqli_stmt_num_rows($stmt) == 1){
+                            $email_err = "This email is already taken.";
+                        } else{
+                            $email = trim($_POST["userEmail"]);
+                            $fullname = trim($_POST['fullname']);
+                        }
+                    } else{
+                        echo "Oops! Something went wrong. Please try again later.";
+                    }
+
+                    mysqli_stmt_close($stmt);
+                }
+            }
+
+            if(empty(trim($_POST["password"]))){
+                $password_err = "Please enter a password.";     
+            } elseif(strlen(trim($_POST["password"])) < 6){
+                $password_err = "Password must have atleast 6 characters.";
+            } else{
+                $password = trim($_POST["password"]);
+            }
+
+            if(empty(trim($_POST["cpassword"]))){
+                $confirm_password_err = "Please confirm password.";     
+            } else{
+                $confirm_password = trim($_POST["cpassword"]);
+                if(empty($password_err) && ($password != $confirm_password)){
+                    $confirm_password_err = "Password did not match.";
+                }
+            }
+
+            if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
+
+                $sql = "INSERT INTO member (full_name, email, password) VALUES ('$fullname', '$email', '$password')";
+                
+                if(mysqli_query($link, $sql)){
+                    echo ' -Member account created';                    
+                }
+                else{
+                    echo "";
+                }
+                
+            }
+
+            mysqli_close($link);
+        }
+        ?>       
         <div class="field-column">
             <label>Full Name</label>
                 <div>
-                    <input type="text" class="input-box" name="fullname" 
-                        value="<?php if(isset($_POST['fullname'])) echo $_POST['fullname']; ?>">
-                </div>
+                    <input type="text" class="input-box" name="fullname" value="<?php if(!empty($_POST['fullname'])){echo $_POST['fullname'];}?>">
+                </div>            
             </div>
             <div class="field-column">
                 <label>Email</label>
                 <div>
-                    <input type="text" class="input-box" name="userEmail" placeholder="abcdefg@gmail.com"
-                        value="<?php if(isset($_POST['userEmail'])) echo $_POST['userEmail']; ?>">
+                    <input type="text" class="input-box" name="userEmail" placeholder="abcdefg@gmail.com" value="<?php if(!empty($_POST['userEmail'])){echo $_POST['userEmail'];}?>">
                 </div>
+                <?php if(!empty($email_err)){
+                    echo $email_err;
+                }?>
             </div>
             <div class="field-column">
                 <label>Password</label>
                 <div><input type="password" class="input-box" name="password" maxlength="14 "value=""></div>
+                <?php if(!empty($password_err_err)){
+                    echo $password_err_err;
+                }?>
             </div>
             <div class="field-column">
                 <label>Confirm Password</label>
                 <div>
-                    <input type="password" class="input-box" name="confirm_password" maxlength="14 "value="">
+                    <input type="password" class="input-box" name="cpassword" maxlength="14 "value="">
                 </div>
+                <?php if(!empty($confirm_password_err)){
+                    echo $confirm_password_err;
+                }?>
             </div>            
             
             <div class="field-column">
@@ -82,7 +130,7 @@
                 </div>
                 <div>
                     <input type="submit"
-                        name="register-user" value="Register"
+                        name="register-member" value="Register"
                         class="btnRegister">
                 </div>
             </div>

@@ -5,7 +5,7 @@ $_SESSION = array();
  
 session_destroy();
  
-header("location: index.php?ismember=0");
+header("location: index.php");
 exit;
 ?>
 

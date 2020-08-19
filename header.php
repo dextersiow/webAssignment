@@ -26,7 +26,7 @@
 </div>
 
 <nav class="navbar navbar-expand-md bg-warning navbar-dark">
-    <a class="navbar-brand" href="index.php?ismember=<?php echo $_REQUEST['ismember'];?>">CHELL'S FRUITS</a>
+    <a class="navbar-brand" href="index.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>">CHELL'S FRUITS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,42 +40,52 @@
                 <a class="nav-link" href="#">Promotion</a>
             </li>             
             <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="product.php"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+        <a class="nav-link dropdown-toggle" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="product.php?filter=all">All</a>
-            <a class="dropdown-item" href="product.php?filter=seasonal">Seasonal fruits</a>
-            <a class="dropdown-item" href="product.php?filter=stone">Stone fruits</a>
-            <a class="dropdown-item" href="product.php?filter=berries">Berries</a>
-            <a class="dropdown-item" href="product.php?filter=tropical">Tropical and exotic</a>          
-            <a class="dropdown-item" href="product.php?filter=others">Others</a>
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=all">All</a>
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=seasonal">Seasonal fruits</a>
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=stone">Stone fruits</a>
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=berries">Berries</a>
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=tropical">Tropical and exotic</a>          
+            <a class="dropdown-item" href="product.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>&filter=others">Others</a>
         </div>
         </li>
-        <?php if($_REQUEST['ismember']==0){
-            echo'<li class="nav-item active">
-                <a class="nav-link" href="admin_login.php">Admin</a>
-            </li>';
-        }
         
-         ?>
+        
+        <li class="nav-item active" id="adm">
+            <a class="nav-link" href="admin_login.php">Admin</a>
+        </li>
+            
+        
+         
         </ul>
         <ul class="navbar-nav justify-content-end">
         
-        <?php if($_REQUEST['ismember'] == 1){
-            echo'                
-                <li class="nav-item active">
+                       
+            <li class="nav-item active" id="logu">
             <a class="nav-link" href="member_logout.php">Logout</a>    
-        </li>';
-        }else{
-            echo'
-        <li class="nav-item active">
+        </li>
+        
+        <li class="nav-item active" id="signin">
             <a class="nav-link" href="signin.php">Sign In/Register</a>    
-        </li>';
-        }
-                ?>
+        </li>
+        
+               
         <li class="nav-item active">
-            <a class="nav-link"  href="cart.php">Cart</a>
+            <a class="nav-link"  href="cart.php?member=<?php if(!empty($_REQUEST['member'])){echo $_REQUEST['member'];}?>">Cart</a>
         </li>
         
         </ul>
     </div>
 </nav>
+
+<?php 
+        session_start();
+        if(isset($_SESSION['loggedin'])){            
+            echo'<style>#adm{visibility:hidden;}#signin{visibility:hidden;}</style>';  
+            echo'<div class="text-center" style="background-color: #FFF0C3;">Welcome '.strtoupper($_SESSION['name']).'</div>';
+        }
+        else{
+            echo'<style>#logu{visibility:hidden;}</style>';
+        }
+?>

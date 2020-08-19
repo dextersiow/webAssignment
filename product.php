@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php include'header.php' ?> 
 <?php
 if (isset($_COOKIE['cart'])) {
     $cart = explode('|', $_COOKIE['cart']);
@@ -42,12 +37,12 @@ if (isset($_REQUEST['productID'])) {
         <link href="assets/css/homepage.css" rel="stylesheet">        
         <script src="assets/javascript/bootstrap.bundle.js"></script>
         <link href="assets/css/product.css" rel="stylesheet">
-
+        
         <title>CHELL'S FRUIT</title>        
 
     </head>
     <body>       
-        <?php include'header.php' ?>        
+               
         <?php
         $con = new mysqli('localhost', 'root', '', 'webassignment');
         if (isset($_REQUEST['filter'])) {
