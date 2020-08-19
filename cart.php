@@ -42,7 +42,13 @@ $select = implode(",", $cart);
                 padding-bottom: 240px;                
             }
         </style>
-
+        <script>
+            $(document).ready(function(){
+                $("#btn").click(function(){
+                   $("table").hide(); 
+                });
+            })
+        </script>
         <title>CHELL'S FRUIT</title>
 
     </head>      
@@ -76,8 +82,10 @@ $select = implode(",", $cart);
                 </thead>                
                 <tbody>
                     <?php
+                    $totalPrice=0;
                     foreach ($cart as $key => $value) {
                         $row = $result->fetch_assoc();
+                        $totalPrice+=$row['price'];
                         echo "<tr class=\"cart cart-row\">
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
@@ -91,7 +99,7 @@ $select = implode(",", $cart);
                 </tbody>
                 <tfoot>
                     <tr>                       
-                        <td colspan="5" style="text-align: right">Subtotal:  RM25.00<br><button type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
+                        <td colspan="5" style="text-align: right">Subtotal:  RM<br><button id="btn" type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
                     </tr>
                 </tfoot>
             </table>

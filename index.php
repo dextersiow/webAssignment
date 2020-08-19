@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <!--
 Web System and Technologies Group Assignment
