@@ -26,7 +26,7 @@
 </div>
 
 <nav class="navbar navbar-expand-md bg-warning navbar-dark">
-    <a class="navbar-brand" href="index.php">CHELL'S FRUITS</a>
+    <a class="navbar-brand" href="index.php?ismember=<?php echo $_REQUEST['ismember'];?>">CHELL'S FRUITS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,10 +38,7 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Promotion</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="admin_login.php">Admin</a>
-            </li> 
+            </li>             
             <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="product.php"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -53,14 +50,32 @@
             <a class="dropdown-item" href="product.php?filter=others">Others</a>
         </div>
         </li>
+        <?php if($_REQUEST['ismember']==0){
+            echo'<li class="nav-item active">
+                <a class="nav-link" href="admin_login.php">Admin</a>
+            </li>';
+        }
+        
+         ?>
         </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-item active">
-                <a class="nav-link" id="link-nav-right" href="signin.php">Sign In/Register</a>    
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" id="link-nav-right" href="cart.php">Cart</a>
-            </li>
+        <ul class="navbar-nav justify-content-end">
+        
+        <?php if($_REQUEST['ismember'] == 1){
+            echo'                
+                <li class="nav-item active">
+            <a class="nav-link" href="member_logout.php">Logout</a>    
+        </li>';
+        }else{
+            echo'
+        <li class="nav-item active">
+            <a class="nav-link" href="signin.php">Sign In/Register</a>    
+        </li>';
+        }
+                ?>
+        <li class="nav-item active">
+            <a class="nav-link"  href="cart.php">Cart</a>
+        </li>
+        
         </ul>
     </div>
 </nav>
