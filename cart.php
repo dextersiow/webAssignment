@@ -42,25 +42,16 @@ $select = implode(",", $cart);
                 padding-bottom: 240px;                
             }
         </style>
-        <script>
-            $(document).ready(function(){
-                $("#btn").click(function(){
-                   $("table").hide(); 
-                });
-            })
-        </script>
+        
         <title>CHELL'S FRUIT</title>
 
     </head>      
 
     <body>
         <?php        
-        
-        
         $con = new mysqli('localhost', 'root', '', 'webassignment');        
         $sql="select * from product where productID IN ($select)";
-        $result=$con->query($sql);
-        
+        $result=$con->query($sql);        
         ?>
        
         <div class="container" >
@@ -80,17 +71,17 @@ $select = implode(",", $cart);
                         <th>Total (RM)</th>
                     </tr>
                 </thead>                
-                <tbody>
+                <tbody class="cart-item">
                     <?php
                     $totalPrice=0;
                     foreach ($cart as $key => $value) {
                         $row = $result->fetch_assoc();
                         $totalPrice+=$row['price'];
-                        echo "<tr class=\"cart cart-row\">
+                        echo "<tr class=\"cart-row\">
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
                         <td class=\"item-price\">{$row['price']}</td>                        
-                        <td class=\"item-quantity\"><input type=\"number\" name=\"quantity\" value=\"1\"></td>
+                        <td><input class=\"item-quantity\" type=\"number\" name=\"quantity\" value=\"1\"></td>
                         <td class=\"item-total\">25.00</td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";
@@ -99,7 +90,7 @@ $select = implode(",", $cart);
                 </tbody>
                 <tfoot>
                     <tr>                       
-                        <td colspan="5" style="text-align: right">Subtotal:  RM<br><button id="btn" type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
+                        <td colspan="5" style="text-align: right"><span class="total-price">Subtotal: RM</span><br><button type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
                     </tr>
                 </tfoot>
             </table>

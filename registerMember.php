@@ -15,6 +15,11 @@
         <script src="assets/javascript/bootstrap.bundle.js"></script> 
         <style>#logu{visibility:hidden;}</style>
         <title>CHELL'S FRUIT</title> 
+        <style>
+            .error{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <?php include 'header.php'; ?>
@@ -27,13 +32,17 @@
         <?php
         require_once "config.php";
  
-        $fullname = $email = $password = $confirm_password = "";
+        $email = $password = $confirm_password = "";
         $email_err = $password_err = $confirm_password_err = "";
 
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            if(empty(trim($_POST["userEmail"]))){
-                $email_err = "Please enter a email.";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!empty($_POST['fullname'])) {
+            $fullname=$_POST['fullname'];
+        }else{
+            $fullname_err="<span class='error'>Please enter your full name.</span>";
+        }
+        if(empty(trim($_POST["userEmail"]))){
+                $email_err = "<span class='error'>Please enter a email.</span>";
             } else{
                 $sql = "SELECT member_id FROM member WHERE email = ?";
 
@@ -46,7 +55,7 @@
                         mysqli_stmt_store_result($stmt);
 
                         if(mysqli_stmt_num_rows($stmt) == 1){
-                            $email_err = "This email is already taken.";
+                            $email_err = "<span class='error'>This email is already taken.</span>";
                         } else{
                             $email = trim($_POST["userEmail"]);
                             $fullname = trim($_POST['fullname']);
@@ -60,19 +69,19 @@
             }
 
             if(empty(trim($_POST["password"]))){
-                $password_err = "Please enter a password.";     
+                $password_err = "<span class='error'>Please enter a password.</span>";     
             } elseif(strlen(trim($_POST["password"])) < 6){
-                $password_err = "Password must have atleast 6 characters.";
+                $password_err = "<span class='error'>Password must have atleast 6 characters.</span>";
             } else{
                 $password = trim($_POST["password"]);
             }
 
             if(empty(trim($_POST["cpassword"]))){
-                $confirm_password_err = "Please confirm password.";     
+                $confirm_password_err = "<span class='error'>Please confirm password.</span>";     
             } else{
                 $confirm_password = trim($_POST["cpassword"]);
                 if(empty($password_err) && ($password != $confirm_password)){
-                    $confirm_password_err = "Password did not match.";
+                    $confirm_password_err = "<span class='error'>Password did not match.</span>";
                 }
             }
 
@@ -84,7 +93,7 @@
                     echo ' -Member account created';                    
                 }
                 else{
-                    echo "";
+                    echo "Please check for input error";
                 }
                 
             }
@@ -96,7 +105,8 @@
             <label>Full Name</label>
                 <div>
                     <input type="text" class="input-box" name="fullname" value="<?php if(!empty($_POST['fullname'])){echo $_POST['fullname'];}?>">
-                </div>            
+                </div>       
+            <?php if(isset($fullname_err)) {echo $fullname_err;}?>
             </div>
             <div class="field-column">
                 <label>Email</label>
@@ -110,8 +120,8 @@
             <div class="field-column">
                 <label>Password</label>
                 <div><input type="password" class="input-box" name="password" maxlength="14 "value=""></div>
-                <?php if(!empty($password_err_err)){
-                    echo $password_err_err;
+                <?php if(!empty($password_err)){
+                    echo $password_err;
                 }?>
             </div>
             <div class="field-column">

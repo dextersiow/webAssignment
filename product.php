@@ -97,9 +97,13 @@ if (isset($_REQUEST['productID'])) {
         <div class="container">
             <?php
             if(isset($errorMsg)){
-                echo"<span class='alert alert_success'>$errorMsg</span>";
+                echo"<div class='alert alert-danger'>";
+                echo"<span>$errorMsg</span>";
+                echo"</div>";
             }else if(isset ($success)){
-                echo"<span class='alert alert_success'>$success</span>";
+                echo"<div class='alert alert-success'>";
+                echo"<span>$success</span>";
+                echo"</div>";
             }
             
             ?>
