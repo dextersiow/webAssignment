@@ -1,8 +1,9 @@
 <?php
-include 'header.php'; 
+include 'header.php';
 
 if (isset($_COOKIE['cart'])) {
     $cart = explode('|', $_COOKIE['cart']);
+   
 } else {
     $cart = array();
 }
@@ -42,6 +43,40 @@ $select = implode(",", $cart);
                 padding-bottom: 240px;                
             }
         </style>
+        <script>
+        $(document).ready(function(){
+            updateCartTotal();
+            var quantityInputs = document.getElementsByClassName('item-quantity');
+            for (var i = 0; i < quantityInputs.length; i++) {
+                 var input = quantityInputs[i];
+                 input.addEventListener('change', quantityChanged);
+            }
+        });
+        
+        function quantityChanged(event) {
+            var input = event.target;
+            if (isNaN(input.value) || input.value <= 0) {
+                input.value = 1;
+            }
+            updateCartTotal();
+        }
+        
+        function updateCartTotal() {
+            var cartItemContainer = document.getElementsByClassName('cart-item')[0];
+            var cartRows = cartItemContainer.getElementsByClassName('cart-row');
+            var total = 0;
+            for (var i = 0; i < cartRows.length; i++) {
+                var cartRow = cartRows[i];
+                var priceElement = cartRow.getElementsByClassName('item-price')[0];
+                var quantityElement = cartRow.getElementsByClassName('item-quantity')[0];
+                var price = parseFloat(priceElement.innerText);
+                var quantity = quantityElement.value;
+                total = total + (price * quantity);
+            }
+            total = Math.round(total * 100) / 100;
+            document.getElementsByClassName('total-price')[0].innerText = "Subtotal: RM "+total;
+        }
+        </script>
         
         <title>CHELL'S FRUIT</title>
 
@@ -68,7 +103,6 @@ $select = implode(",", $cart);
                         <th colspan="2">Product</th>
                         <th>Price (RM)</th>
                         <th>Quantity</th>
-                        <th>Total (RM)</th>
                     </tr>
                 </thead>                
                 <tbody class="cart-item">
@@ -82,7 +116,6 @@ $select = implode(",", $cart);
                         <td class=\"cart-itemname\">{$row['productName']}</td>
                         <td class=\"item-price\">{$row['price']}</td>                        
                         <td><input class=\"item-quantity\" type=\"number\" name=\"quantity\" value=\"1\"></td>
-                        <td class=\"item-total\">25.00</td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";
                     }
@@ -90,7 +123,7 @@ $select = implode(",", $cart);
                 </tbody>
                 <tfoot>
                     <tr>                       
-                        <td colspan="5" style="text-align: right"><span class="total-price">Subtotal: RM</span><br><button type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
+                        <td colspan="4" style="text-align: right"><span class="total-price"></span><br><button type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
                     </tr>
                 </tfoot>
             </table>

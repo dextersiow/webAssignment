@@ -48,10 +48,9 @@ and open the template in the editor.
                     <h1><?php echo $row["productName"]; ?></h1>
                     <h2>Price: RM <?php echo $row["price"]; ?></h2>
                     <p><u>Shipping calculated at checkout</u></p>
-                    <form>
-                        <label><b>Quantity:</b></label><br>
-                        <input id="quantity" type="number" name="quantity" value="1"><br>
+                    <form action="product.php" method="post">
                         <input id="addCart" type="submit" name="addtocart" value="ADD TO CART">
+                        <input type="hidden" name="productID" value="<?php echo$row['productID']?>">
                     </form>
                 </div>
             </div>
