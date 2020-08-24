@@ -26,8 +26,8 @@
 </div>
 
 <nav class="navbar navbar-expand-md bg-warning navbar-dark">
-    <a class="navbar-brand" href="index.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
+    <a class="navbar-brand" href="index.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}";
 } ?>">CHELL'S FRUITS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,29 +42,29 @@
                 <a class="nav-link" href="#">Promotion</a>
             </li>             
             <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                <a class="nav-link dropdown-toggle" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=all">All</a>
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=seasonal">Seasonal fruits</a>
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=stone">Stone fruits</a>
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=berries">Berries</a>
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=tropical">Tropical and exotic</a>          
-                    <a class="dropdown-item" href="product.php?member=<?php if (!empty($_REQUEST['member'])) {
-    echo $_REQUEST['member'];
-} ?>&filter=others">Others</a>
-                </div>
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=all">All</a>
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=seasonal">Seasonal fruits</a>
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=stone">Stone fruits</a>
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=berries">Berries</a>
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=tropical">Tropical and exotic</a>          
+                    <a class="dropdown-item" href="product.php?<?php if (isset($_REQUEST['member'])) {
+    echo "member={$_REQUEST['member']}&";
+} ?>filter=others">Others</a>
+               </div>
             </li>
 
 

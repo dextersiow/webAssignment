@@ -1,9 +1,13 @@
 <?php
 session_start();
- 
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
+}
+
+if(isset($_REQUEST['alert'])){
+    echo"<script>alert('Please sign in before proceeding to check out!')</script>";
 }
  
 require_once "config.php";
@@ -40,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     mysqli_stmt_bind_result($stmt, $id, $name, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(strcmp($password, $hashed_password) == 0){
-                            session_start();
+                            //session_start();
                             
                             $_SESSION["loggedin"] = true;
                             $_SESSION["member_id"] = $id;                           

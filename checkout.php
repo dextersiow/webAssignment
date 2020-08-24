@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!(isset($_SESSION['loggedin'])&& $_SESSION["loggedin"] === true)){
+    header("location: signin.php?alert=1");
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
