@@ -1,12 +1,14 @@
-<?php 
+<?php
 session_start();
-include'header.php'; 
+include'header.php';
 ?> 
 <?php
-if (isset($_COOKIE['cart'])) {
+if ((isset($_COOKIE['cart'])) && (isset($_COOKIE['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
+    $quantity = explode('|', $_COOKIE['quantity']);
 } else {
     $cart = array();
+    $quantity = array();
 }
 
 if (isset($_REQUEST['productID'])) {
@@ -19,10 +21,13 @@ if (isset($_REQUEST['productID'])) {
         $errorMsg = "Item has already been added to cart!";
     } else {
         $cart[] = $_REQUEST['productID'];
+        $quantity[] = $_REQUEST['quantity'];
         $success = "Item has been added to cart successfully!";
     }
     $cartString = implode('|', $cart);
-    setcookie('cart', $cartString);   
+    setcookie('cart', $cartString);
+    $quantityString = implode('|', $quantity);
+    setcookie('quantity', $quantityString);
 }
 ?>
 <html>

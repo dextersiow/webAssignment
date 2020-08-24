@@ -3,6 +3,14 @@ session_start();
 if(!(isset($_SESSION['loggedin'])&& $_SESSION["loggedin"] === true)){
     header("location: signin.php?alert=1");
 }
+if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
+    $cart = explode('|', $_COOKIE['cart']);
+    $quantity = explode('|', $_COOKIE['quantity']);
+} else {
+    $cart = array();
+    $quantity = array();
+}
+$con = new mysqli('localhost', 'root', '', 'webassignment'); 
 ?>
 <!DOCTYPE html>
 <!--
@@ -33,8 +41,12 @@ and open the template in the editor.
             h1{
                 color: white;
             }
-            .cart-itemname{                
-                width: 30%;
+            .cart-itemimg{                
+                width: 37%;
+            }
+            
+            .img{
+                width: 70px;
             }
             
            
@@ -52,46 +64,39 @@ and open the template in the editor.
             </div>
             <div class="row">
                 <div class="col-6">               
-                    <form action="completeOrder.php" method="POST">
+                    <form action="completeOrder.php" method="post">
                         <table class="table table-borderless">
-                            <tr>
-                                <td><label for="contact">Contact Information: </label><br>
-                                <input type="text" name="contact"/><br></td>
-                            </tr>
-                            <tr>
-                                <td><label for="delivery">Delivery Method: </label></td> 
-                            </tr>
-                            <tr>
-                                <td><input type="radio" name="delivery" value="ship">Ship</td>
-                                <td><input type="radio" name="delivery" value="pickup">Pick up</td>
-                            </tr>
-                        
-                            <tr><td><label for="shipping">Shipping Address: </label></td></tr>
-                       
-                            <tr><td>First Name: <input type="text" name="fname"></td><td>Last Name: <input type="text" name="lname"></td></tr>
-                            <tr><td colspan="2">Address: <input type="text" name="address" size="60px"></td></tr>
-                            <tr><td colspan="2">Phone Number: <input type="tel" name="phone" size="53px"></td></tr>  
-                            <tr><td colspan="2"><input type="submit" value="Complete Order"></td></tr>
+                            <tr><td><label for="shipping">Shipping Address: </label></td></tr>                       
+                            <tr><td><label>First Name: </label><input type="text" name="fname" placeholder="First Name"></td><td><label>Last Name: </label><input type="text" name="lname" placeholder="Last Name"></td></tr>
+                            <tr><td colspan="2"><label>Address: </label><input type="text" name="address" size="60px" placeholder="Address"></td></tr>
+                            <tr><td colspan="2"><label>Phone Number: </label><input type="tel" name="phone" size="53px" placeholder="Phone Number"></td></tr>  
+                            <tr><td colspan="2"><input class="btn btn-info" type="submit" value="Complete Order"></td></tr>
                         </table>
                     </form>
                 </div>
                 <div class="col-6 bg-light">
-                    <table class="table table-hover" style="border-bottom:1px;">  
-                        <tr class="cart cart-row">
-                            <td class="cart-itemimg"><img src="pics/products/australia_carrot.jpg"></td>
-                            <td class="cart-itemname">Australia Carrot</td>
-                            <td class="item-price">25.00</td>                        
-                            <td class="item-quantity">1</td>
-                            <td class="item-total">25.00</td>                       
-                        </tr>   
+                    <table class="table table-hover" style="border-bottom:1px;">
+                        <?php
+                         foreach ($cart as $key => $value){
+                              $sql = "select * from product where productID ={$value}";
+                        $result = $con->query($sql);
+                        $row = $result->fetch_assoc();
+                        echo "<tr class=\"cart cart-row\">
+                            <td class=\"cart-itemimg\"><img class='img' src=\"pics/products/{$row['productImage']}\"></td>
+                            <td class=\"cart-itemname\">{$row['productName']}</td>                        
+                            <td class=\"item-quantity\">{$quantity[$key]}</td>
+                            <td class=\"item-price\" style=\"text-align:right\">RM {$row['price']}</td>                    
+                        </tr>";
+                         }
+                        ?>
                         <tfoot>
                             <tr>
-                                <td>Subtotal:<br>Shipping:</td>
-                                <td colspan="4" style="text-align:right">RM 25.00<br>RM 10.00</td>
+                                <td colspan="3">Subtotal:<br>Shipping:</td>
+                                <td style="text-align:right">RM <?php echo $_REQUEST['total']?><br>RM 10</td>
                             </tr>
                             <tr>
-                                <td>Total:</td>
-                                <td colspan="4" style="text-align: right">RM 35.00<br></td>
+                                <td colspan="3">Total:</td>
+                                <td style="text-align: right">RM <?php echo ($_REQUEST['total']+10)?><br></td>
                             </tr>
                         </tfoot>
                     </table>

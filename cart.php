@@ -2,19 +2,23 @@
 session_start();
 include 'header.php';
 
-if (isset($_COOKIE['cart'])) {
+if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
-   
+    $quantity = explode('|', $_COOKIE['quantity']);
 } else {
     $cart = array();
+    $quantity = array();
 }
 if (isset($_REQUEST['remove'])) {
     $k = $_REQUEST['remove'];
     unset($cart[$k]);
+    unset($quantity[$k]);
 }
 $cartString = implode('|', $cart);
 setcookie('cart', $cartString);
-$select = implode(",", $cart);
+$quantityString = implode('|', $quantity);
+setcookie('quantity', $quantityString);
+$con = new mysqli('localhost', 'root', '', 'webassignment');      
 ?>
 <html>
     <head>
@@ -76,6 +80,7 @@ $select = implode(",", $cart);
             }
             total = Math.round(total * 100) / 100;
             document.getElementsByClassName('total-price')[0].innerText = "Subtotal: RM "+total;
+            document.getElementsByClassName('total-price2')[0].value = total;
         }
         </script>
         
@@ -84,12 +89,6 @@ $select = implode(",", $cart);
     </head>      
 
     <body>
-        <?php        
-        $con = new mysqli('localhost', 'root', '', 'webassignment');        
-        $sql="select * from product where productID IN ($select)";
-        $result=$con->query($sql);        
-        ?>
-       
         <div class="container" >
             <div class="jumbotron text-center bg-cover">
                 <div class="container">
@@ -97,7 +96,8 @@ $select = implode(",", $cart);
                 <p><a href="product.php">Continue Shopping</a></p>
                 </div>
             </div>
-
+            
+            <form action="checkout.php" method="post">
             <table class="table table-hover table" style="border-bottom:1px;">
                 <thead>
                     <tr>
@@ -107,16 +107,16 @@ $select = implode(",", $cart);
                     </tr>
                 </thead>                
                 <tbody class="cart-item">
-                    <?php
-                    $totalPrice=0;
+                    <?php                   
                     foreach ($cart as $key => $value) {
-                        $row = $result->fetch_assoc();
-                        $totalPrice+=$row['price'];
+                        $sql = "select * from product where productID ={$value}";
+                        $result = $con->query($sql);
+                        $row = $result->fetch_assoc();                        
                         echo "<tr class=\"cart-row\">
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
-                        <td class=\"item-price\">{$row['price']}</td>                        
-                        <td><input class=\"item-quantity\" type=\"number\" name=\"quantity\" value=\"1\"></td>
+                        <td class=\"item-price\">{$row['price']}</td>
+                        <td><input class=\"item-quantity\" type=\"number\" name=\"quantity\" value=\"{$quantity[$key]}\"></td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";
                     }
@@ -124,11 +124,15 @@ $select = implode(",", $cart);
                 </tbody>
                 <tfoot>
                     <tr>                       
-                        <td colspan="4" style="text-align: right"><span class="total-price"></span><br><button type="button" onclick="location = 'checkout.php'">Proceed to Checkout</button></td>
+                        <td colspan="4" style="text-align: right"><span class="total-price"></span><br><input class="total-price2" type="hidden" name="total"><input class="btn btn-info" type="submit" value="Checkout"></td>
                     </tr>
                 </tfoot>
             </table>
+        </form>
         </div>            
-        <?php include 'footer.php' ?>
+        <?php 
+        $con->close();
+        include 'footer.php' ;
+        ?>
     </body>
 </html>

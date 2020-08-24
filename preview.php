@@ -49,6 +49,8 @@ and open the template in the editor.
                     <h2>Price: RM <?php echo $row["price"]; ?></h2>
                     <p><u>Shipping calculated at checkout</u></p>
                     <form action="product.php" method="post">
+                        <label><b>Quantity:</b></label><br>
+                        <input id="quantity" type="number" name="quantity" value="1"><br>
                         <input id="addCart" type="submit" name="addtocart" value="ADD TO CART">
                         <input type="hidden" name="productID" value="<?php echo$row['productID']?>">
                     </form>
