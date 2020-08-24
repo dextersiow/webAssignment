@@ -1,3 +1,26 @@
+<?php 
+session_start();
+if(!(isset($_SESSION['loggedin'])&& $_SESSION["loggedin"] === true)){
+    header("location: signin.php?alert=1");
+}
+if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
+    $cart = explode('|', $_COOKIE['cart']);
+    $quantity = explode('|', $_COOKIE['quantity']);
+} else {
+    $cart = array();
+    $quantity = array();
+}
+date_default_timezone_get('Asia/Kuala_Lumpur');
+$date=date('Y-m-j');
+$con = new mysqli('localhost', 'root', '', 'webassignment'); 
+$sql="select * from member where member_id={$_SESSION["member_id"]}";
+$result=$con->query($sql);
+$row=$result->fetch_assoc();
+$t=$_REQUEST['total']+10;
+$sql2="INSERT INTO fruit_order (member_id,order_date,amount) VALUES ({$row['member_id']},'$date',$t)";
+$r=$con->query($sql2);
+$last_id = $con->insert_id;
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -30,8 +53,12 @@ and open the template in the editor.
                 color: white;
             }
 
-            .cart-itemname{
-                width: 30%;
+            .cart-itemimg{                
+                width: 37%;
+            }
+            
+            .img{
+                width: 70px;
             }
 
             .content{
@@ -54,8 +81,8 @@ and open the template in the editor.
             <div class="row">
                 <div class="col-6">
                     <div class="order-header">
-                        <span class="order-number">Order number: 1234</span>
-                        <h3>Thank You Mr. ???</h3>
+                        <span class="order-number">Order number: <?php echo$last_id?></span>
+                        <h3>Thank You <?php echo $_REQUEST['fname']?></h3>
                     </div>
                     <div class="content">
                         <h2>Your order is confirmed</h2>
@@ -64,25 +91,26 @@ and open the template in the editor.
                         <p>Account Name: Chell's Fruit SDN. BHD</p>
                         <p>Account Number: 6412356789</p>
                         <p>2) Send your payment receipt to mhsmalaysia@gmail.com. Please put your Order Number in the subject line. Order number is at the top of this page.</p>
+                        <p>3) Your order will be delivered within the next day :D</p>
                     </div>
 
                     <div class="content">
                         
                         <div class="customer-information">
                             <h4>Customer Information</h4>
-                            <p>Siow Yee How</p>
-                            <p>???@gmail.com</p>
+                            <p><?php echo "{$_REQUEST['fname']} {$_REQUEST['lname']}" ?></p>
+                            <p><?php echo "{$row['email']}"?></p>
                         </div>
 
                         <div class="shipping-address">
                             <h4>Shipping Address</h4>
-                            <p class="address">66, Jalan8,<br>Taman Putra, Ampang,<br>68000 Selangor</p>
+                            <p class="address"><?php echo$_REQUEST['address'] ?></p>
                         </div>
 
 
                         <div class="payment">
                             <h4>Payment</h4>
-                            <p>Amount: RM 35.00</p>
+                            <p>Amount: RM <?php echo $t?></p>
                         </div>                            
 
                     </div>
@@ -90,22 +118,28 @@ and open the template in the editor.
                 </div>
 
                 <div class="col-6 bg-light">
-                    <table class="table table-hover" style="border-bottom:1px;">  
-                        <tr class="cart cart-row">
-                            <td class="cart-itemimg"><img src="pics/products/australia_carrot.jpg"></td>
-                            <td class="cart-itemname">Australia Carrot</td>
-                            <td class="item-price">25.00</td>                        
-                            <td class="item-quantity">1</td>
-                            <td class="item-total">25.00</td>                       
-                        </tr>   
+                    <table class="table table-hover" style="border-bottom:1px;">
+                        <?php
+                         foreach ($cart as $key => $value){
+                              $sql = "select * from product where productID ={$value}";
+                        $result = $con->query($sql);
+                        $row = $result->fetch_assoc();
+                        echo "<tr class=\"cart cart-row\">
+                            <td class=\"cart-itemimg\"><img class='img' src=\"pics/products/{$row['productImage']}\"></td>
+                            <td class=\"cart-itemname\">{$row['productName']}</td>                        
+                            <td class=\"item-quantity\">{$quantity[$key]}</td>
+                            <td class=\"item-price\" style=\"text-align:right\">RM {$row['price']}</td>                    
+                        </tr>";
+                         }
+                        ?>
                         <tfoot>
                             <tr>
-                                <td>Subtotal:<br>Shipping:</td>
-                                <td colspan="4" style="text-align:right">RM 25.00<br>RM 10.00</td>
+                                <td colspan="3">Subtotal:<br>Shipping:</td>
+                                <td style="text-align:right">RM <?php echo $_REQUEST['total']?><br>RM 10</td>
                             </tr>
                             <tr>
-                                <td>Total:</td>
-                                <td colspan="4" style="text-align: right">RM 35.00<br></td>
+                                <td colspan="3">Total:</td>
+                                <td style="text-align: right">RM <?php echo ($t)?><br></td>
                             </tr>
                         </tfoot>
                     </table>

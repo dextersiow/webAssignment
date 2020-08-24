@@ -10,7 +10,7 @@ if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
     $cart = array();
     $quantity = array();
 }
-$con = new mysqli('localhost', 'root', '', 'webassignment'); 
+$con = new mysqli('localhost', 'root', '', 'webassignment');
 ?>
 <!DOCTYPE html>
 <!--
@@ -67,10 +67,11 @@ and open the template in the editor.
                     <form action="completeOrder.php" method="post">
                         <table class="table table-borderless">
                             <tr><td><label for="shipping">Shipping Address: </label></td></tr>                       
-                            <tr><td><label>First Name: </label><input type="text" name="fname" placeholder="First Name"></td><td><label>Last Name: </label><input type="text" name="lname" placeholder="Last Name"></td></tr>
-                            <tr><td colspan="2"><label>Address: </label><input type="text" name="address" size="60px" placeholder="Address"></td></tr>
+                            <tr><td><label>First Name: </label><input type="text" name="fname" placeholder="First Name" required></td><td><label>Last Name: </label><input type="text" name="lname" placeholder="Last Name" required></td></tr>
+                            <tr><td colspan="2"><label>Address: </label><input type="text" name="address" size="60px" placeholder="Address" required></td></tr>
                             <tr><td colspan="2"><label>Phone Number: </label><input type="tel" name="phone" size="53px" placeholder="Phone Number"></td></tr>  
-                            <tr><td colspan="2"><input class="btn btn-info" type="submit" value="Complete Order"></td></tr>
+                            <tr><td colspan="2"><input class="btn btn-info" name="submit" type="submit" value="Complete Order"></td></tr>
+                            <input type="hidden" name="total" value="<?php echo $_REQUEST['total']?>">
                         </table>
                     </form>
                 </div>
@@ -103,7 +104,9 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        <?php include 'footer.php'; ?>       
+        <?php 
+        $con->close();
+        include 'footer.php'; ?>       
 
     </body>
 </html>
