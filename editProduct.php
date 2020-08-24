@@ -9,12 +9,8 @@
         <?php
         require_once 'config.php';
         
-        $productID = $_REQUEST['productID'];
-        $sql = "SELECT * from product where productID='{$productID}'";
-        $result = mysqli_query($link, $sql);
-        $row=$result->fetch_assoc();
-        extract($row);
         
+        $productID = $_REQUEST['pID'];
         if(isset($_POST['submit'])){
             $pname = $_POST['productName'];
             $price = $_POST['price'];
@@ -24,39 +20,82 @@
             $destination = 'pics/products/'.$fname;
             $extension = pathinfo($fname, PATHINFO_EXTENSION);     
             $file = $_FILES['pImg']['tmp_name'];
-            $size = $_FILES['pImg']['size'];
+            $size = $_FILES['pImg']['size'];            
             
-            $sql = "UPDATE product set cat_id='{$cat}',productName='{$pname}',price='{$price}',productImage='{$fname}' where productID='{$productID}'";
-                      
-        }
+            if(!in_array($extension,['png','jpeg','jpg'])){
+                $message = "Invalid file type";
+                
+            }
+            elseif($_FILES['pImg']['size'] > 1000000){
+                echo 'File too large';
+            }
+            else{
+                if(move_uploaded_file($file, $destination)){
+                    $sql2 = "UPDATE product set cat_id='{$cat}',productName='{$pname}',price='{$price}',productImage='{$fname}' where productID='{$productID}'";
+                    if(mysqli_query($link, $sql2)){
+                        $message = "Edit successful";                    }
+                    else{
+                        $message = "Edit failed, Please try again later";
+                    }
+                }
+            }       
+        }        
+        
+        $sql = "SELECT * from product where productID='{$productID}'";
+        $result = mysqli_query($link, $sql);
+        $row=$result->fetch_assoc();
+        extract($row);
      
         mysqli_close($link);    
-        ?>
+        ?>       
         
         <div class="container" style="margin-left: 10px;">
-            <form action='editProduct.php' method='post' class="needs-validation" novalidate enctype="multipart/form-data">
+            <form action='editProduct.php?pID=<?php echo $productID;?>' method='post' class="needs-validation" novalidate enctype="multipart/form-data">
             <h2>Edit product</h2>
             <div>
-                <a href="welcome_admin.php"><img src="pics/back_btn.png" style="width:1.5%;"></a>
+                <a href="manageProduct.php"><img src="pics/back_btn.png" style="width:1.5%;"></a>
             </div>
             <table class="table table-borderless">  
-                <br>
-                <p>Enter product ID and edit the product details.</p>
                 <tr>
                     <td><label for="productID">Product ID:</label></td>
-                    <td><input type="text" name="productID" class="form-control"></td>
-                </tr>          
-                
-            <?php 
-            if(!empty($message)){
+                    <td><input type="type" name="productID" class="form-control" value="<?php echo $row['productID'];?>" disabled></td>
+                </tr>
+                    <tr>
+                        <td><label for="productName">Product Name:</label></td>
+                        <td><input type="text" name="productName" class="form-control" value="<?php echo $row['productName'];?>"></td>
+                    </tr>           
+            
+                <tr>
+                    <td><label for="price">Price:</label></td>
+                    <td><input type="number" name="price" class="form-control" min="0.00" placeholder="RM" step="0.01" value="<?php echo number_format((float)$row['price'],2,'.','');?>"></td>    
+                </tr>            
+           
+                <tr>
+                    <td><label for="category">Category:</label></td>
+                <td>
+                    <select name='category' class="form-control" required="required">
+                        <option value = '' hidden="hidden">-Select one-</option>
+                        <option <?php if(strcmp($row['cat_id'],"SE01")==0){echo'selected';}?> value='SE01'>Seasonal fruits</option>
+                        <option <?php if(strcmp($row['cat_id'],"ST01")==0){echo'selected';}?> value='ST01'>Stone fruits</option>
+                        <option <?php if(strcmp($row['cat_id'],"BE01")==0){echo'selected';}?> value='BE01'>Berries</option>
+                        <option <?php if(strcmp($row['cat_id'],"TE01")==0){echo'selected';}?> value='TE01'>Tropical and exotic</option>
+                        <option <?php if(strcmp($row['cat_id'],"OT01")==0){echo'selected';}?> value='OT01'>Others</option>
+                </select>
+                </td>
+                </tr>            
+                    <tr>
+                        <td><label for="productImg">Product Image:</label></td>                        
+                        <td><input type="file" name="pImg" id="pImg"></td>
+                        
+                    </tr>                
+                </table>
+            
+            <?php if(!empty($message)){
                 echo'<p>'.$message.'</p>';                             
-            }else{
-
             }
-            ?>
-            </table>
+                ?>
             <input type="submit" name="submit" class="btn btn-primary">
-            <input type="reset" name="reset" class="btn btn-danger" onclick="location.reload();">
+            <input type="button" name="cancel" value="Cancel" class="btn btn-danger" onclick="window.location.href='manageProduct.php'">
             
          </form>
         </div>

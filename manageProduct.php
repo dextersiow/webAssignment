@@ -5,7 +5,7 @@
        
     </head>
     <body>
-        <div>
+        
         <?php
         require_once 'config.php';
         
@@ -13,11 +13,12 @@
         $productArray = mysqli_query($link, $sql);
         $numOfRow = $link->affected_rows;   
         ?>
-        
+        <div style="margin-left: 10px;">
         <h2>All Products</h2>
         <div style="margin-bottom: 5px;">
             <a href="welcome_admin.php"><img src="pics/back_btn.png" style="width:1.5%;"></a>
         </div>
+        
         <table class="table" style="width:80%">
             <thead>
                 <tr><th style="width:10%">Product ID</th><th style="width:20%">Product Name</th><th style="width:20%">Category</th><th style="width:10%">Price(RM)</th><th style="width:30%">Image</th><th style="width:10%">Action</th></tr>
@@ -54,5 +55,6 @@
             ?>
             </tbody></table>
         </div>
+        
     </body>
 </html>

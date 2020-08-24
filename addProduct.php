@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta charset="UTF-8">
+        <?php include 'links.php'?>
         <title>CHELL'S FRUIT</title>
         
         <style>
@@ -51,7 +51,7 @@
         mysqli_close($link);    
         ?>
         
-        <div class="container">
+        <div class="container" style="margin-left: 10px;">
             <form action='addProduct.php' method='post' class="needs-validation" novalidate id="addForm" enctype="multipart/form-data">
             <h2>Add product</h2>
             <div>
@@ -94,8 +94,8 @@
                 echo'<p>'.$message.'</p>';                             
             }
                 ?>
-            <input style="margin-top: 10px;" type="submit" name="submit" class="btn btn-primary">
-            <input type="reset" name="reset" class="btn btn-primary" onclick="location.reload();">
+            <input type="submit" name="submit" class="btn btn-primary">
+            <input type="reset" name="reset" class="btn btn-danger" onclick="location.reload();">
             
          </form>
         </div>
