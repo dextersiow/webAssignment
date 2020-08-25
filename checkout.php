@@ -2,10 +2,12 @@
 session_start();
 if(!(isset($_SESSION['loggedin'])&& $_SESSION["loggedin"] === true)){
     header("location: signin.php?alert=1");
+}else if(empty ($_COOKIE['cart'])){
+    header("location: cart.php?alert=1");
 }
-if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
+if ((isset($_COOKIE['cart']))&&(isset($_REQUEST['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
-    $quantity = explode('|', $_COOKIE['quantity']);
+    $quantity = $_REQUEST['quantity'];
 } else {
     $cart = array();
     $quantity = array();
@@ -41,8 +43,9 @@ and open the template in the editor.
             h1{
                 color: white;
             }
-            .cart-itemimg{                
-                width: 37%;
+           
+            .item-price{
+                width: 20%;
             }
             
             .img{

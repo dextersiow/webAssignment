@@ -52,10 +52,6 @@ and open the template in the editor.
             h1{
                 color: white;
             }
-
-            .cart-itemimg{                
-                width: 37%;
-            }
             
             .img{
                 width: 70px;

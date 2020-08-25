@@ -1,7 +1,9 @@
 <?php
 session_start();
 include 'header.php';
-
+if(isset($_REQUEST['alert'])){
+    echo "<script>alert('Cart is empty!!')</script>";
+}
 if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
     $quantity = explode('|', $_COOKIE['quantity']);
@@ -15,9 +17,10 @@ if (isset($_REQUEST['remove'])) {
     unset($quantity[$k]);
 }
 $cartString = implode('|', $cart);
-setcookie('cart', $cartString);
-$quantityString = implode('|', $quantity);
-setcookie('quantity', $quantityString);
+    setcookie('cart', $cartString);
+    $quantityString = implode('|', $quantity);
+    setcookie('quantity', $quantityString);
+
 $con = new mysqli('localhost', 'root', '', 'webassignment');      
 ?>
 <html>
@@ -55,7 +58,7 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
             for (var i = 0; i < quantityInputs.length; i++) {
                  var input = quantityInputs[i];
                  input.addEventListener('change', quantityChanged);
-            }
+            };
         });
         
         function quantityChanged(event) {
@@ -116,7 +119,7 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
                         <td class=\"item-price\">{$row['price']}</td>
-                        <td><input class=\"item-quantity\" type=\"number\" name=\"quantity\" value=\"{$quantity[$key]}\"></td>
+                        <td><input class=\"item-quantity\" type=\"number\" name=\"quantity[]\" value=\"{$quantity[$key]}\"></td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";
                     }

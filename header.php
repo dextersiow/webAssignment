@@ -87,9 +87,9 @@
 
 
             <li class="nav-item active">
-                <a class="nav-link"  href="cart.php?member=<?php
+                <a class="nav-link"  href="cart.php?<?php
                 if (isset($_REQUEST['member'])) {
-                    echo $_REQUEST['member'];
+                    echo "member=".$_REQUEST['member'];
                 }
                 ?>">Cart</a>
             </li>
