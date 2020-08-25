@@ -1,10 +1,10 @@
 <?php
 session_start();
 include 'header.php';
-if(isset($_REQUEST['alert'])){
+if (isset($_REQUEST['alert'])) {
     echo "<script>alert('Cart is empty!!')</script>";
 }
-if ((isset($_COOKIE['cart']))&&(isset($_COOKIE['quantity']))) {
+if ((isset($_COOKIE['cart'])) && (isset($_COOKIE['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
     $quantity = explode('|', $_COOKIE['quantity']);
 } else {
@@ -16,12 +16,13 @@ if (isset($_REQUEST['remove'])) {
     unset($cart[$k]);
     unset($quantity[$k]);
 }
-$cartString = implode('|', $cart);
-    setcookie('cart', $cartString);
-    $quantityString = implode('|', $quantity);
-    setcookie('quantity', $quantityString);
 
-$con = new mysqli('localhost', 'root', '', 'webassignment');      
+$cartString = implode('|', $cart);
+setcookie('cart', $cartString);
+$quantityString = implode('|', $quantity);
+setcookie('quantity', $quantityString);
+
+$con = new mysqli('localhost', 'root', '', 'webassignment');
 ?>
 <html>
     <head>
@@ -50,6 +51,12 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
             .jumbotron{
                 padding-bottom: 240px;                
             }
+            
+            #empty{
+                text-align: center;
+                font-size: 30px;
+            }
+            
         </style>
         <script>
         $(document).ready(function(){
@@ -110,18 +117,22 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
                     </tr>
                 </thead>                
                 <tbody class="cart-item">
-                    <?php                   
-                    foreach ($cart as $key => $value) {
-                        $sql = "select * from product where productID ={$value}";
-                        $result = $con->query($sql);
-                        $row = $result->fetch_assoc();                        
-                        echo "<tr class=\"cart-row\">
+                    <?php    
+                    if (empty($cart)) {
+                        echo"<tr><td id='empty' colspan='5'>Cart is empty</td></tr>";
+                    } else {
+                        foreach ($cart as $key => $value) {
+                            $sql = "select * from product where productID ={$value}";
+                            $result = $con->query($sql);
+                            $row = $result->fetch_assoc();
+                            echo "<tr class=\"cart-row\">
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
                         <td class=\"item-price\">{$row['price']}</td>
                         <td><input class=\"item-quantity\" type=\"number\" name=\"quantity[]\" value=\"{$quantity[$key]}\"></td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";
+                        }
                     }
                     ?>
                 </tbody>
