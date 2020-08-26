@@ -34,7 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <h4 class="list-group-item" style="background-color:#DFE0E2;">Menu action</h4>  
         <a href="manageProduct.php" class="list-group-item list-group-item-action">Manage product</a>     
         <a href="addProduct.php" class="list-group-item list-group-item-action">Add product</a>
-        <a href="#" class="list-group-item list-group-item-action">View orders</a>
+        <a href="view_orders.php" class="list-group-item list-group-item-action">View orders</a>
         
         <?php if(strcmp($_SESSION['admin_id'], "1001") == 0){
                     echo '<a href="#" class="list-group-item list-group-item-action">Add admin</a>'

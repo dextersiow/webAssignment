@@ -2,7 +2,7 @@
 session_start();
  
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome_admin.php?admin={$username}");
+    header("location: welcome_admin.php?admin={$_SESSION["username"]}");
     exit;
 }
  

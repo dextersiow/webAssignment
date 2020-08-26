@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (empty($_SESSION['loggedin'])){
+    header('Location: index.php');
+}
+?>
+
 <html>
     <head>
         <?php include'links.php'; ?>
