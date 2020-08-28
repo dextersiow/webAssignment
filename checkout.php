@@ -12,6 +12,10 @@ if ((isset($_COOKIE['cart']))&&(isset($_REQUEST['quantity']))) {
     $cart = array();
     $quantity = array();
 }
+$cartString = implode('|', $cart);
+setcookie('cart', $cartString);
+$quantityString = implode('|', $quantity);
+setcookie('quantity', $quantityString);
 $con = new mysqli('localhost', 'root', '', 'webassignment');
 ?>
 <!DOCTYPE html>
