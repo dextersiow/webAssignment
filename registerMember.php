@@ -19,6 +19,9 @@
             .error{
                 color: red;
             }
+            .btnRegister:hover{
+                background: darkblue; 
+            }
         </style>
     </head>
     <body>
@@ -84,8 +87,12 @@
                     $confirm_password_err = "<span class='error'>Password did not match.</span>";
                 }
             }
+            if(!isset($_POST['terms'])){
+                $terms_err="<span class='error'>Please accept the terms and condition</span>";
+            }
+            
 
-            if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
+            if(empty($email_err) && empty($password_err) && empty($confirm_password_err)&& !isset($terms_err)){
 
                 $sql = "INSERT INTO member (full_name, email, password) VALUES ('$fullname', '$email', '$password')";
                 
@@ -97,6 +104,8 @@
                 }
                 
             }
+            
+            
 
             mysqli_close($link);
         }
@@ -136,12 +145,15 @@
             
             <div class="field-column">
                 <div class="terms">
-                    <input type="checkbox" name="terms"> I accept terms and conditions
+                    <input type="checkbox" name="terms"> I accept terms and conditions<br>
+                    <?php if(isset($terms_err)) 
+                        echo $terms_err; ?>
                 </div>
                 <div>
                     <input type="submit"
                         name="register-member" value="Register"
                         class="btnRegister">
+                    
                 </div>
             </div>
         </div>

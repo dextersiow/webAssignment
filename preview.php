@@ -22,6 +22,16 @@ and open the template in the editor.
 
 
         <title>CHELL'S FRUIT</title>
+        
+        <script>
+            $(document).ready(function(){
+                $("#quantity").change(function(){
+                    if($("#quantity").val()<1){
+                        $("#quantity").val(1);
+                    }
+                })
+            })
+        </script>
     </head>
     <body>
         <?php
