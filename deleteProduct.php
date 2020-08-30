@@ -13,9 +13,14 @@ if (empty($_SESSION['loggedin'])){
     </head>
     <body>
         <?php
-        require_once 'config.php';        
-        
+        require_once 'config.php'; 
         $productID = $_REQUEST['pID'];
+        $sql = "SELECT * from product where productID='{$productID}'";
+        $result = mysqli_query($link, $sql);
+        $row=$result->fetch_assoc();
+        extract($row);
+               
+        
         if(isset($_POST['submit'])){
             
             $sql = "DELETE FROM product where productID='{$productID}'";
@@ -24,13 +29,9 @@ if (empty($_SESSION['loggedin'])){
             }
             else{
                 $message = "Delete failed, Please try again later";                
-            }   
+            }            
         } 
-        $sql = "SELECT * from product where productID='{$productID}'";
-        $result = mysqli_query($link, $sql);
-        $row=$result->fetch_assoc();
-        extract($row);
-        mysqli_close($link);    
+        mysqli_close($link);  
         ?>       
         
         <div class="container" style="margin-left: 10px;">
@@ -71,7 +72,7 @@ if (empty($_SESSION['loggedin'])){
             }
                 ?>
             <p>Are you sure you want to delete this product?</p>
-            <input type="submit" name="yes" value="Confirm" class="btn btn-primary">
+            <input type="submit" name="submit" value="Confirm" class="btn btn-primary">
             <input type="button" name="no" value="Cancel" class="btn btn-danger" onclick="window.location.href='manageProduct.php'">
             
          </form>
