@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -26,12 +27,12 @@ and open the template in the editor.
         <script>
             $(document).ready(function(){
                 $("#quantity").change(function(){
-                    if($("#quantity").val()<1){
+                    if($("#quantity").val()<1){     
                         $("#quantity").val(1);
                     }
                 })
             })
-        </script>
+        </script>       
     </head>
     <body>
         <?php
@@ -87,6 +88,9 @@ and open the template in the editor.
                     }
                     $con->close();
                     ?>
+                </div>
+                <div class="text-center">
+                    <button id="return" class="btn btn-dark" type="button" onclick="location='product.php'">Return to product</button>
                 </div>
             </div>
         </div>
