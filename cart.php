@@ -88,7 +88,7 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
                 var quantity = quantityElement.value;
                 total = total + (price * quantity);
             }
-            total = Math.round(total * 100) / 100;
+            total = Number(Math.round((total * 100) / 100 + 'e2') + 'e-2').toFixed(2);
             document.getElementsByClassName('total-price')[0].innerText = "Subtotal: RM "+total;
             document.getElementsByClassName('total-price2')[0].value = total;
         }
@@ -128,7 +128,7 @@ $con = new mysqli('localhost', 'root', '', 'webassignment');
                             echo "<tr class=\"cart-row\">
                         <td class=\"cart-itemimg\"><img src=\"pics/products/{$row['productImage']}\"></td>
                         <td class=\"cart-itemname\">{$row['productName']}</td>
-                        <td class=\"item-price\">{$row['price']}</td>
+                        <td class=\"item-price\">",number_format((float)$row['price'],2,'.',''),"</td>
                         <td><input class=\"item-quantity\" type=\"number\" name=\"quantity[]\" value=\"{$quantity[$key]}\"></td>
                         <td><button type=\"button\" class=\"btn btn-danger remove-btn\" onclick=\"location='cart.php?remove={$key}'\">Remove</button></td>
                     </tr>";

@@ -132,7 +132,7 @@ if (isset($_REQUEST['productID'])) {
                     </div>
                     <div class=\"product-bottom text-center\">
                         <h3>{$row["productName"]}</h3>
-                        <h5>RM {$row["price"]}</h5>
+                        <h5>RM",number_format((float)$row['price'],2,'.',''),"</h5>
                     </div>
                     </div>";
             }

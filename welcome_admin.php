@@ -36,9 +36,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="addProduct.php" class="list-group-item list-group-item-action">Add product</a>
         <a href="view_orders.php" class="list-group-item list-group-item-action">View orders</a>
         
-        <?php if(strcmp($_SESSION['admin_id'], "1001") == 0){
-                    echo '<a href="#" class="list-group-item list-group-item-action">Add admin</a>'
-            . '           <a href="#" class="list-group-item list-group-item-action">Delete admin</a>';
+        <?php if(strcmp($_SESSION['admin_id'], "1000") == 0){
+                    echo '<a href="addAdmin.php" class="list-group-item list-group-item-action">Add admin</a>'
+            . '           <a href="deleteAdmin.php" class="list-group-item list-group-item-action">Delete admin</a>';
         }
 ?>
     </div>

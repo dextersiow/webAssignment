@@ -106,7 +106,7 @@ and open the template in the editor.
 
                         <div class="payment">
                             <h4>Payment</h4>
-                            <p>Amount: RM <?php echo $t?></p>
+                            <p>Amount: RM <?php echo number_format((float)$t,2,'.','')?></p>
                         </div>                            
 
                     </div>
@@ -124,18 +124,18 @@ and open the template in the editor.
                             <td class=\"cart-itemimg\"><img class='img' src=\"pics/products/{$row['productImage']}\"></td>
                             <td class=\"cart-itemname\">{$row['productName']}</td>                        
                             <td class=\"item-quantity\">{$quantity[$key]}</td>
-                            <td class=\"item-price\" style=\"text-align:right\">RM {$row['price']}</td>                    
+                            <td class=\"item-price\" style=\"text-align:right\">RM",number_format((float)$row['price'],2,'.',''),"</td>                    
                         </tr>";
                          }
                         ?>
                         <tfoot>
                             <tr>
                                 <td colspan="3">Subtotal:<br>Shipping:</td>
-                                <td style="text-align:right">RM <?php echo $_REQUEST['total']?><br>RM 10</td>
+                                <td style="text-align:right">RM <?php echo number_format((float)$_REQUEST['total'],2,'.','')?><br>RM 10.00</td>
                             </tr>
                             <tr>
                                 <td colspan="3">Total:</td>
-                                <td style="text-align: right">RM <?php echo ($t)?><br></td>
+                                <td style="text-align: right">RM <?php echo number_format((float)$t,2,'.','')?><br></td>
                             </tr>
                         </tfoot>
                     </table>
