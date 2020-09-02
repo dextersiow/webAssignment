@@ -28,7 +28,7 @@ if (empty($_SESSION['loggedin'])){
         
         <table class="table" style="width:80%">
             <thead>
-                <tr><th style="width:10%">Product ID</th><th style="width:20%">Product Name</th><th style="width:20%">Category</th><th style="width:10%">Price(RM)</th><th style="width:30%">Image</th><th style="width:10%">Action</th></tr>
+                <tr><th style="width:10%">Product ID</th><th style="width:15%">Product Name</th><th style="width:15%">Category</th><th style="width:10%">Price(RM)</th><th style="width:30%">Image</th><th style="width: 10%">Best Seller</th><th style="width:10%">Action</th></tr>
             </thead>
             <tbody>   
           <?php
@@ -50,13 +50,21 @@ if (empty($_SESSION['loggedin'])){
                         $category = "Others";
                         break;
                 }
+                
                 echo "<tr>"
                     ."<td>{$row['productID']}</td>"
                     ."<td>{$row['productName']}</td>"
                     ."<td>{$category}</td>"
                     ."<td>",number_format((float)$row['price'],2,'.',''),"</td>"
-                    ."<td><img src=\"./pics/products/{$row["productImage"]}\"></td>"
-                    ."<td><a href='editProduct.php?pID={$row['productID']}'><img src=\"./pics/edit_btn.png\"></a><a href='deleteProduct.php?pID={$row['productID']}'><img src=\"./pics/delete_btn.png\"></a><td>";
+                    ."<td><img src=\"./pics/products/{$row["productImage"]}\"></td>";
+                    if($row['bestSell']){
+                        echo "<td><img src=\"./pics/tick_ico.png\"></td>";
+                    }else{
+                        echo "<td></td>";
+                    }
+                        
+                    
+                    echo "<td><a href='editProduct.php?pID={$row['productID']}'><img src=\"./pics/edit_btn.png\"></a><a href='deleteProduct.php?pID={$row['productID']}'><img src=\"./pics/delete_btn.png\"></a><td>";
             }
             
             ?>
@@ -65,3 +73,4 @@ if (empty($_SESSION['loggedin'])){
         
     </body>
 </html>
+

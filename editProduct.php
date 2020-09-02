@@ -22,6 +22,7 @@ if (empty($_SESSION['loggedin'])){
             $pname = $_POST['productName'];
             $price = $_POST['price'];
             $cat = $_POST['category'];
+            $bestSell = $_POST['bestSell'];
             
             $fname=$_FILES['pImg']['name'];
             $destination = 'pics/products/'.$fname;
@@ -38,7 +39,7 @@ if (empty($_SESSION['loggedin'])){
             }
             else{
                 if(move_uploaded_file($file, $destination)){
-                    $sql2 = "UPDATE product set cat_id='{$cat}',productName='{$pname}',price='{$price}',productImage='{$fname}' where productID='{$productID}'";
+                    $sql2 = "UPDATE product set cat_id='{$cat}',productName='{$pname}',price='{$price}',productImage='{$fname}', bestSell='{$bestSell}' where productID='{$productID}'";
                     if(mysqli_query($link, $sql2)){
                         $message = "Edit successful";                    }
                     else{
@@ -89,7 +90,17 @@ if (empty($_SESSION['loggedin'])){
                         <option <?php if(strcmp($row['cat_id'],"OT01")==0){echo'selected';}?> value='OT01'>Others</option>
                 </select>
                 </td>
-                </tr>            
+                </tr>        
+                <tr>
+                    <td><label for="bestSell">Best Sell:</label></td>
+                    <td>
+                        <select name='bestSell' class="form-control" required="required">
+                        <option value = '' hidden="hidden">-Select one-</option>
+                        <option <?php if($row['bestSell']==1){echo'selected';}?> value='1'>Yes</option>
+                        <option <?php if($row['bestSell']==0){echo'selected';}?> value='0'>No</option>                        
+                        </select>
+                    </td>                    
+                </tr>
                     <tr>
                         <td><label for="productImg">Product Image:</label></td>                        
                         <td><input type="file" name="pImg" id="pImg"></td>
@@ -110,3 +121,5 @@ if (empty($_SESSION['loggedin'])){
     </body>
     
 </html>
+
+

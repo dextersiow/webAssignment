@@ -40,7 +40,7 @@ and open the template in the editor.
             <?php
             echo "<div class=\"row\">";
             
-            $sql="select * from product where bestSell='yes'";
+            $sql="select * from product where bestSell='1'";
             $result=$con->query($sql);
        
             while ($row = $result->fetch_assoc()) {
