@@ -20,6 +20,10 @@ $t=$_REQUEST['total']+10;
 $sql2="INSERT INTO fruit_order (member_id,order_date,amount) VALUES ({$row['member_id']},'$date',$t)";
 $r=$con->query($sql2);
 $last_id = $con->insert_id;
+for($i=0;$i<count($cart);$i++){
+    $sql3="insert into order_details values($last_id,{$cart[$i]},{$quantity[$i]})";
+    $r2=$con->query($sql3);
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -86,7 +90,7 @@ and open the template in the editor.
                         <p>Bank Name: Public Bank Berhad</p>
                         <p>Account Name: Chell's Fruit SDN. BHD</p>
                         <p>Account Number: 6412356789</p>
-                        <p>2) Send your payment receipt to mhsmalaysia@gmail.com. Please put your Order Number in the subject line. Order number is at the top of this page.</p>
+                        <p>2) Send your payment receipt to ChellsFruit@gmail.com. Please put your Order Number in the subject line. Order number is at the top of this page.</p>
                         <p>3) Your order will be delivered within the next day :D</p>
                     </div>
 
