@@ -114,7 +114,7 @@ and open the template in the editor.
                         </div>                            
 
                     </div>
-                    <button class="btn btn-warning" onclick="location='product.php'">Continue Shopping</button>
+                    <button class="btn btn-warning" onclick="location='product.php?refresh=1'">Continue Shopping</button>
                 </div>
 
                 <div class="col-6 bg-light">

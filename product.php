@@ -3,6 +3,10 @@ session_start();
 include'header.php';
 ?> 
 <?php
+if(isset($_REQUEST['refresh'])){
+    setcookie("cart", "", time() - 3600);
+    setcookie("quantity", "", time() - 3600);
+}
 if ((isset($_COOKIE['cart'])) && (isset($_COOKIE['quantity']))) {
     $cart = explode('|', $_COOKIE['cart']);
     $quantity = explode('|', $_COOKIE['quantity']);
