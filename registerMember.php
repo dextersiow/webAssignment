@@ -16,6 +16,9 @@
         <style>#logu{visibility:hidden;}</style>
         <title>CHELL'S FRUIT</title> 
         <style>
+            .success{
+                color: green;
+            }
             .error{
                 color: red;
             }
@@ -97,10 +100,10 @@
                 $sql = "INSERT INTO member (full_name, email, password) VALUES ('$fullname', '$email', '$password')";
                 
                 if(mysqli_query($link, $sql)){
-                    echo ' -Member account created';                    
+                    echo '<span class="success">Member account created</span>';                    
                 }
                 else{
-                    echo "Please check for input error";
+                    echo "<span class='error'>Please check for input error</span>";
                 }
                 
             }
@@ -120,7 +123,7 @@
             <div class="field-column">
                 <label>Email</label>
                 <div>
-                    <input type="text" class="input-box" name="userEmail" placeholder="abcdefg@gmail.com" value="<?php if(!empty($_POST['userEmail'])){echo $_POST['userEmail'];}?>">
+                    <input type="email" class="input-box" name="userEmail" placeholder="abcdefg@gmail.com" value="<?php if(!empty($_POST['userEmail'])){echo $_POST['userEmail'];}?>">
                 </div>
                 <?php if(!empty($email_err)){
                     echo $email_err;
