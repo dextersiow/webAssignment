@@ -54,14 +54,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: index.php?member={$_SESSION['member_id']}&ismember={$ismember}");                          
                             exit;
                         }else{
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "<span class='error'>The password you entered was not valid.</span>";                           
                         }
                     }
                 }else{
-                    $email_err = "No account found with that email.";
+                    $email_err = "<span class='error'>No account found with that email.</span>";
                 }
             }else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "<span class='error'>Oops! Something went wrong. Please try again later.</span>";
             }
 
             mysqli_stmt_close($stmt);
@@ -81,6 +81,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link href="assets/css/signin.css" rel="stylesheet">
 
     <title>CHELL'S FRUIT</title>  
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
    
     
   </head>
@@ -90,8 +95,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <h1 class="h3 mb-3 font-weight-normal">Member sign in</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <?php if(isset($email_err))echo $email_err?>
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+  <?php if(isset($password_err))echo $password_err?>
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Remember me
