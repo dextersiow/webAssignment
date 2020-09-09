@@ -70,12 +70,12 @@ if (empty($_SESSION['loggedin'])){
                 </tr>
                     <tr>
                         <td><label for="productName">Product Name:</label></td>
-                        <td><input type="text" name="productName" class="form-control" value="<?php echo $row['productName'];?>"></td>
+                        <td><input type="text" name="productName" class="form-control" value="<?php echo $row['productName'];?>" required></td>
                     </tr>           
             
                 <tr>
                     <td><label for="price">Price:</label></td>
-                    <td><input type="number" name="price" class="form-control" min="0.00" placeholder="RM" step="0.01" value="<?php echo number_format((float)$row['price'],2,'.','');?>"></td>    
+                    <td><input type="number" name="price" class="form-control" min="0.00" placeholder="RM" step="0.01" value="<?php echo number_format((float)$row['price'],2,'.','');?>" required></td>    
                 </tr>            
            
                 <tr>
@@ -103,7 +103,7 @@ if (empty($_SESSION['loggedin'])){
                 </tr>
                     <tr>
                         <td><label for="productImg">Product Image:</label></td>                        
-                        <td><input type="file" name="pImg" id="pImg"></td>
+                        <td><input type="file" name="pImg" id="pImg" required></td>
                         
                     </tr>                
                 </table>

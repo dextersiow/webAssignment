@@ -32,6 +32,7 @@ if (empty($_SESSION['loggedin'])){
             </thead>
             <tbody>   
           <?php
+          $count =0;
             while ($row = $productArray->fetch_assoc()) {
                 switch ($row['cat_id']) {
                     case "BE01":
@@ -64,11 +65,19 @@ if (empty($_SESSION['loggedin'])){
                     }
                         
                     
-                    echo "<td><a href='editProduct.php?pID={$row['productID']}'><img src=\"./pics/edit_btn.png\"></a><a href='deleteProduct.php?pID={$row['productID']}'><img src=\"./pics/delete_btn.png\"></a><td>";
+                    echo "<td><a href='editProduct.php?pID={$row['productID']}'><img src=\"./pics/edit_btn.png\"></a><a href='deleteProduct.php?pID={$row['productID']}'><img src=\"./pics/delete_btn.png\"></a><td></tr>";
+                    $count++;
             }
             
             ?>
-            </tbody></table>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"><strong>Total products:</strong></td>
+                    <td colspan="5"><?php echo $count;?></td>
+                </tr>
+            </tfoot>
+        </table>
         </div>
         
     </body>

@@ -15,24 +15,24 @@ if (empty($_SESSION['loggedin'])){
         <?php
         require_once 'config.php'; 
         if(isset($_POST['submit'])){
-            $adminID=$_POST['adminID'];
-            $sql = "DELETE from admin where admin_id='{$adminID}'";
-            if(mysqli_query($link, $sql)){
-                $message = "Admin deleted successful";                
+            $adminID=$_POST['adminID'];            
+            $sql = "DELETE FROM admin WHERE admin_id={$adminID}";
+           
+            
+            if(mysqli_query($link,$sql)){ 
+                echo "<script>alert('Admin deleted successful');</script>";                
             }
             else{
-                $message = "Unable to delete, Please try again later";                
+                $message = "Unable to delete, Please try again";                
             } 
         }
         mysqli_close($link);  
 
-         
-        
         ?>       
         
         <div class="container" style="margin-left: 10px;">
             <form action='deleteAdmin.php' method='post' class="needs-validation" novalidate enctype="multipart/form-data">
-            <h2>Delete product</h2>
+            <h2>Delete admin</h2>
             <div>
                 <a href="welcome_admin.php"><img src="pics/back_btn.png" style="width:1.5%;"></a>
             </div>
@@ -43,7 +43,8 @@ if (empty($_SESSION['loggedin'])){
                 </tr>                
             </table>
             
-            <?php if(!empty($message)){
+            <?php 
+            if(!empty($message)){
                 echo'<p>'.$message.'</p>';                             
             }
             ?>

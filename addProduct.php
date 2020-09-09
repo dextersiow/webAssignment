@@ -67,13 +67,13 @@ if (empty($_SESSION['loggedin'])){
             <table class="table table-borderless">                
                     <tr>
                         <td><label for="productName">Product Name:</label></td>
-                        <td><input type="text" name="productName" class="form-control"></td>
+                        <td><input type="text" name="productName" class="form-control" required pattern="(a-zA-z)" maxlength="35"></td>
                     </tr>
                 
             
                 <tr>
                     <td><label for="price">Price:</label></td>
-                    <td><input type="number" name="price" class="form-control" min="0.00" placeholder="RM" step="0.01"></td>    
+                    <td><input type="number" name="price" class="form-control" min="0.00" placeholder="RM" step="0.01" required></td>    
                 </tr>
             
            
@@ -93,7 +93,7 @@ if (empty($_SESSION['loggedin'])){
             
                     <tr>
                         <td><label for="productImg">Product Image:</label></td>
-                        <td><input type="file" name="pImg" id="pImg"></td>
+                        <td><input type="file" name="pImg" id="pImg" required></td>
                     </tr>
                 
                 </table>

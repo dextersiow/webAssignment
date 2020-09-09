@@ -72,15 +72,15 @@ if (empty($_SESSION['loggedin'])){
             <table class="table table-borderless">                
                     <tr>
                         <td><label for="userName">Username:</label></td>
-                        <td><input type="text" name="userName" class="form-control"></td>
+                        <td><input type="text" name="userName" class="form-control" required></td>
                     </tr>    
                     <tr>
                         <td><label for="password">Password:</label></td>
-                        <td><input type="password" name="password" class="form-control"></td>
+                        <td><input type="password" name="password" class="form-control" required></td>
                     </tr> 
                     <tr>
                         <td><label for="cPassword">Confirm password:</label></td>
-                        <td><input type="password" name="cPassword" class="form-control"></td>
+                        <td><input type="password" name="cPassword" class="form-control" required></td>
                     </tr> 
                 </table>
             <?php if(!empty($message)){
