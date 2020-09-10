@@ -6,10 +6,14 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-if(isset($_REQUEST['alert'])){
-    echo"<script>alert('Please sign in before proceeding to check out!')</script>";
+if (isset($_REQUEST['alert'])) {
+    if ($_REQUEST['alert'] == 1) {
+        echo"<script>alert('Please sign in before proceeding to check out!')</script>";
+    } else if ($_REQUEST['alert']==2) {
+        echo"<script>alert('Please sign in to check order status')</script>";
+    }
 }
- 
+
 require_once "config.php";
  
 $email = $password = "";
