@@ -32,7 +32,7 @@ and open the template in the editor.
         $conn=new mysqli('localhost','root','','webassignment');
         $sql="select * from fruit_order where member_id={$_SESSION['member_id']}";
         $result=$conn->query($sql);
-       
+        
         ?>
         
         
