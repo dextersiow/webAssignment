@@ -93,7 +93,7 @@
 <?php
 if (isset($_SESSION['loggedin'])) {
     echo'<style>#adm{visibility:hidden;}#signin{visibility:hidden;}</style>';
-    echo'<div class="text-center" style="background-color: #FFF0C3;">Welcome ' . strtoupper($_SESSION['name']) . '</div>';
+    echo'<div class="text-center" style="background-color: #FFF0C3;">Welcome ' . strtoupper($_SESSION["name"]) . '</div>';
 } else {
     echo'<style>#logu{visibility:hidden;}</style>';
 }

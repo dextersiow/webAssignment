@@ -25,17 +25,69 @@ and open the template in the editor.
         <link href="assets/css/homepage.css" rel="stylesheet">    
         <script src="assets/javascript/bootstrap.bundle.js"></script>
         <title>CHELL'S FRUIT</title>
+         <style>
+            .jumbotron{
+                background-image: url("pics/product_banner2.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin-bottom: 40px;
+            }
+            .table{
+                font-size: 20px;
+                border: solid orange;
+            }
+            thead{
+                background: yellow;
+            }
+            th{
+                color: orangered;
+            }
+            h1{
+                font-size: 90px;
+            }
+        </style>
     </head>
     <body>
-        <?php
+         <?php
         include 'header.php';
         $conn=new mysqli('localhost','root','','webassignment');
         $sql="select * from fruit_order where member_id={$_SESSION['member_id']}";
-        $result=$conn->query($sql);
-        
+        $result=$conn->query($sql);    
         ?>
-        
-        
+
+        <div class="jumbotron text-center">            
+            <div class="container">
+                <h1 class="font-italic">Order Status</h1>
+            </div>
+        </div>
+        <div class="container">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Order Amount</th>
+                        <th>Payment Status</th>
+                        <th>Delivery Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while($row=$result->fetch_assoc()){
+                        echo "<tr>"
+                        ."<td>{$row['order_id']}</td>"
+                        ."<td>{$row['order_date']}</td>"
+                        ."<td>","RM ",number_format((float)$row['amount'],2,'.',''),"</td>"
+                        ."<td>{$row['payment_status']}</td>"    
+                        ."<td>{$row['delivery_status']}</td>"                        
+                        ."</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
         <?php
         include 'footer.php';
         ?>
